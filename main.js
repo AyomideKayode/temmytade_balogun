@@ -47,3 +47,10 @@ ScrollReveal().reveal('.service__card', {
   delay: 1000,
   interval: 500,
 });
+
+const swiper = new Swiper('.swiper', {
+  loop: true,
+  pagination: {
+    el: '.swiper-pagination',
+  },
+});
