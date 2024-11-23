@@ -70,3 +70,11 @@ ScrollReveal().reveal('.blog__container .blog__btn', {
   ...scrollRevealOption,
   delay: 1500,
 });
+
+const instagram = document.querySelector('.instagram__flex');
+
+Array.from(instagram.children).forEach((item) => {
+  const duplicateNode = item.cloneNode(true);
+  duplicateNode.setAttribute('aria-hidden');
+  instagram.appendChild(duplicateNode);
+});
