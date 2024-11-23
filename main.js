@@ -54,3 +54,19 @@ const swiper = new Swiper('.swiper', {
     el: '.swiper-pagination',
   },
 });
+
+ScrollReveal().reveal('.blog__container .section__header', {
+  ...scrollRevealOption,
+});
+ScrollReveal().reveal('.blog__container h4', {
+  ...scrollRevealOption,
+  delay: 500,
+});
+ScrollReveal().reveal('.blog__container p', {
+  ...scrollRevealOption,
+  delay: 1000,
+});
+ScrollReveal().reveal('.blog__container .blog__btn', {
+  ...scrollRevealOption,
+  delay: 1500,
+});
