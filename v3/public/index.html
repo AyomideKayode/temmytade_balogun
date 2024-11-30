@@ -37,7 +37,7 @@
     </div>
 
     <!-- #Header -->
-    <header class="header active" data-header>
+    <header class="header" data-header>
       <div class="container">
         <a href="#" class="logo">
           <img
@@ -48,7 +48,7 @@
           />
         </a>
 
-        <button class="nav_open_btn" aria-label="open menu">
+        <button class="nav_open_btn" aria-label="open menu" data-nav-toggler>
           <img src="./images/menu.svg" width="17" height="17" alt="menu icon" />
         </button>
 
@@ -64,7 +64,11 @@
               />
             </a>
 
-            <button class="nav_close_btn" aria-label="close menu">
+            <button
+              class="nav_close_btn"
+              aria-label="close menu"
+              data-nav-toggler
+            >
               <span class="span one"></span>
               <span class="span two"></span>
             </button>
@@ -72,22 +76,26 @@
 
           <ul class="navbar_list">
             <li class="navbar_item">
-              <a href="#home" class="navbar_link">Home</a>
+              <a href="#home" class="navbar_link" data-nav-link>Home</a>
             </li>
             <li class="navbar_item">
-              <a href="#gallery" class="navbar_link">Gallery</a>
+              <a href="#gallery" class="navbar_link" data-nav-link>Gallery</a>
             </li>
             <li class="navbar_item">
-              <a href="#about" class="navbar_link">About</a>
+              <a href="#about" class="navbar_link" data-nav-link>About</a>
             </li>
             <li class="navbar_item">
-              <a href="#services" class="navbar_link">Services</a>
+              <a href="#services" class="navbar_link" data-nav-link>Services</a>
             </li>
             <li class="navbar_item">
-              <a href="#portfolio" class="navbar_link">Portfolio</a>
+              <a href="#portfolio" class="navbar_link" data-nav-link
+                >Portfolio</a
+              >
             </li>
             <li class="navbar_item">
-              <a href="#contact" class="navbar_link">Contact Us</a>
+              <a href="#contact" class="navbar_link" data-nav-link
+                >Contact Us</a
+              >
             </li>
           </ul>
 
@@ -115,6 +123,9 @@
         <div class="overlay" data-nav-toggler data-overlay></div>
       </div>
     </header>
+
+
+    
 
     <!-- js link -->
     <script src="./js/script.js"></script>
