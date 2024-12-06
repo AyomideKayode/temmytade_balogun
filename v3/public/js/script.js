@@ -52,3 +52,78 @@ const activeElementOnScroll = function () {
 };
 
 window.addEventListener('scroll', activeElementOnScroll); // add scroll event to window
+
+// TEXT ANIMATION EFFECT for HERO Section
+const letterBoxes = document.querySelectorAll('[data-letter-effect]'); // get all letter boxes
+
+let activeLetterBoxIndex = 0; // set active letter box index to 0
+let lastActiveLetterBoxIndex = 0; // set last active letter box index to 0
+let totalLetterBoxDelay = 0; // set total letter box delay to 0
+
+const setLetterEffect = function () {
+  // loop through all letter boxes
+  for (let i = 0; i < letterBoxes.length; i++) {
+    // set initial animation delay to 0
+    let letterAnimationDelay = 0;
+
+    // get all characters from the current letter box
+    const letters = letterBoxes[i].textContent.trim();
+    // remove all character from the current letter box
+    letterBoxes[i].textContent = '';
+
+    // loop through all the letters
+    for (let j = 0; j < letters.length; j++) {
+      // create a span
+      const span = document.createElement('span');
+      // set animation delay on span
+      span.style.animationDelay = `${letterAnimationDelay}s`;
+
+      // set the "in" class on the span, if current letter box is active
+      // otherwise set the "out" class
+      // span.className = i === activeLetterBoxIndex ? 'in' : 'out';
+      if (i === activeLetterBoxIndex) {
+        span.classList.add('in');
+      } else {
+        span.classList.add('out');
+      }
+
+      // pass current letter into the span
+      span.textContent = letters[j];
+      // add space class on span, when current letter is a space
+      if (letters[j] === ' ') span.classList.add('space');
+
+      // pass the span on the current letter box
+      letterBoxes[i].appendChild(span);
+      // skip letterAnimationDelay when loop is in the last index
+      if (j >= letters.length - 1) break;
+      // otherwise update letterAnimationDelay
+      letterAnimationDelay += 0.05;
+    }
+
+    // get total delay of active letter box
+    if (i === activeLetterBoxIndex) {
+      totalLetterBoxDelay = Number(letterAnimationDelay.toFixed(2));
+    }
+
+    // add active clas on last active letter box
+    if (i === lastActiveLetterBoxIndex) {
+      letterBoxes[i].classList.add('active');
+    } else {
+      letterBoxes[i].classList.remove('active');
+    }
+  }
+
+  setTimeout(function () {
+    lastActiveLetterBoxIndex = activeLetterBoxIndex;
+
+    // update activeLetterBoxIndex based on total letter boxes
+    activeLetterBoxIndex >= letterBoxes.length - 1
+      ? activeLetterBoxIndex = 0
+      : activeLetterBoxIndex++;
+
+    setLetterEffect(); // call setLetterEffect function
+  }, totalLetterBoxDelay * 1000 + 3000);
+};
+
+// call the letter effect function after window is loaded
+window.addEventListener('load', setLetterEffect);
