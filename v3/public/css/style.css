@@ -801,6 +801,52 @@ body.active {
 /*-----------------------------------*\
   #PORTFOLIO
 \*-----------------------------------*/
+.portfolio {
+  padding-block-end: 100px;
+}
+
+.portfolio .section_title {
+  margin-block-end: 60px;
+}
+
+.portfolio_card {
+  position: relative;
+  margin-block-end: 50px;
+}
+
+.portfolio_card :is(.card_content, .btn_icon) {
+  position: absolute;
+  z-index: 1;
+}
+
+.portfolio_card .card_content {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 15px;
+}
+
+.portfolio_card .card_tag {
+  color: var(--white_a70);
+  font-weight: var(--fw-300);
+}
+
+.portfolio_card .btn_icon {
+  top: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  --hover-bg-color: var(--radical-red);
+  --hover-text-color: var(--white);
+}
+
+.portfolio_card .btn_icon svg {
+  width: 20px;
+}
+
+.portfolio_card .card_title:is(:hover, :focus-visible) {
+  text-decoration: underline;
+}
 
 /*-----------------------------------*\
   #FOOTER
