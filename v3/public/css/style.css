@@ -14,6 +14,9 @@
   --smokey-black: hsl(0, 0%, 7%);
   --eerie-black: hsl(0, 0%, 9%);
   --radical-red: hsl(346, 100%, 58%);
+  --brown-raw-umber: hsl(27, 55%, 39%);
+  --brown-chamoisee: hsl(27, 36%, 51%);
+  --brown-lion: hsl(27, 36%, 64%);
   --white_a9: hsla(0, 0%, 100%, 0.09);
   --white_a15: hsla(0, 0%, 100%, 0.15);
   --white_a25: hsla(0, 0%, 100%, 0.25);
@@ -412,7 +415,7 @@ body.active {
 }
 
 .nav_close_btn:is(:hover, :focus-visible) .span {
-  background-color: var(--radical-red);
+  background-color: var(--brown-chamoisee);
 }
 
 .navbar_list {
@@ -429,7 +432,7 @@ body.active {
 }
 
 .navbar_link:is(:hover, :focus-visible) {
-  color: var(--radical-red);
+  color: var(--brown-lion);
 }
 
 .login_btn {
@@ -438,7 +441,7 @@ body.active {
   align-items: center;
   gap: 0.9rem;
   width: 100%;
-  background-color: var(--radical-red);
+  background-color: var(--brown-chamoisee);
   color: var(--white);
   padding: 8px 1.75rem;
   border-radius: var(--radius-5);
@@ -464,7 +467,7 @@ body.active {
 }
 
 .navbar .contact_link {
-  color: var(--radical-red);
+  color: var(--brown-lion);
   font-size: var(--fs-6);
   font-weight: var(--fw-400);
 }
@@ -856,7 +859,7 @@ body.active {
   right: 20px;
   width: 45px;
   height: 45px;
-  --hover-bg-color: var(--radical-red);
+  --hover-bg-color: var(--brown-raw-umber);
   --hover-text-color: var(--white);
 }
 
@@ -895,7 +898,7 @@ body.active {
   width: 60px;
   height: 60px;
   margin-inline: auto;
-  --hover-bg-color: var(--radical-red);
+  --hover-bg-color: var(--brown-lion);
 }
 
 .footer .btn_icon img {
@@ -961,7 +964,7 @@ body.active {
   width: 60px;
   height: 60px;
   border: 1px dashed currentColor;
-  color: var(--radical-red);
+  color: var(--brown-chamoisee);
   font-size: var(--fs-11);
   border-radius: var(--radius-circle);
   display: grid;
