@@ -8,7 +8,9 @@ const addEventOnElements = function (elements, eventType, callback) {
   }
 };
 
-// PRELOADING
+/**
+ * Preloading Animation Effect
+ */
 const loadingElement = document.querySelector('[data-loading]'); // get loading element
 
 window.addEventListener('load', function () {
@@ -16,7 +18,9 @@ window.addEventListener('load', function () {
   this.document.body.classList.remove('active'); // remove active class from body
 });
 
-// Mobile Nav Toggle Function
+/**
+ * Nav Toggle Functionality for Mobile
+ */
 const [navTogglers, navLinks, navbar, overlay] = [
   document.querySelectorAll('[data-nav-toggler]'),
   document.querySelectorAll('[data-nav-link]'),
@@ -40,7 +44,9 @@ const closeNav = function () {
 
 addEventOnElements(navLinks, 'click', closeNav); // add click event to navLinks
 
-// Header
+/**
+ * Header Active Class on Scroll
+ */
 const header = document.querySelector('[data-header]'); // get header element
 
 const activeElementOnScroll = function () {
@@ -53,7 +59,9 @@ const activeElementOnScroll = function () {
 
 window.addEventListener('scroll', activeElementOnScroll); // add scroll event to window
 
-// TEXT ANIMATION EFFECT for HERO Section
+/**
+ * Text Animation Effect for HERO Section
+ */
 const letterBoxes = document.querySelectorAll('[data-letter-effect]'); // get all letter boxes
 
 let activeLetterBoxIndex = 0; // set active letter box index to 0
@@ -148,3 +156,25 @@ window.addEventListener('scroll', function () {
     backToTopBtn.classList.remove('show'); // remove show class from back to top button
   }
 });
+
+/**
+ * Scroll Reveal Animation
+ */
+const revealElements = document.querySelectorAll('[data-reveal]'); // get all reveal elements
+
+const scrollReveal = function () {
+  for (let i = 0; i < revealElements.length; i++) {
+    // check if element is in view
+    const elementIsInView =
+      revealElements[i].getBoundingClientRect().top < window.innerHeight / 1.15;
+
+    if (elementIsInView) {
+      revealElements[i].classList.add('revealed'); // add revealed class to element
+    } else {
+      revealElements[i].classList.remove('revealed'); // remove revealed class from element
+    }
+  }
+};
+
+window.addEventListener('scroll', scrollReveal); // add scroll event to window
+scrollReveal(); // call scrollReveal function
