@@ -16,8 +16,11 @@
     <link rel="stylesheet" href="./css/style.css" />
     <!-- custom font link -->
     <link rel="stylesheet" href="./font/font.css" />
+    <!-- preload images -->
+    <link rel="preload" as="image" href="./images/loading.svg">
+    <link rel="preload" as="image" href="./images/loading-circle.svg">
   </head>
-  <body class="active">
+  <body class="active" id="top">
     <!-- #Preloading -->
     <div class="loading" data-loading>
       <img
@@ -1247,6 +1250,12 @@
         />
       </div>
     </footer>
+
+    <!-- Back to top -->
+    <a href="#top" class="back_top_btn" aria-label="back to top" data-back-top-btn>0%</a>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" data-cursor></div>
 
     <!-- js link -->
     <script src="./js/script.js"></script>

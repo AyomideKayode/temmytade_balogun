@@ -118,7 +118,7 @@ const setLetterEffect = function () {
 
     // update activeLetterBoxIndex based on total letter boxes
     activeLetterBoxIndex >= letterBoxes.length - 1
-      ? activeLetterBoxIndex = 0
+      ? (activeLetterBoxIndex = 0)
       : activeLetterBoxIndex++;
 
     setLetterEffect(); // call setLetterEffect function
@@ -127,3 +127,24 @@ const setLetterEffect = function () {
 
 // call the letter effect function after window is loaded
 window.addEventListener('load', setLetterEffect);
+
+/**
+ * Back to Top Button
+ */
+const backToTopBtn = document.querySelector('[data-back-top-btn]'); // get back to top button
+
+window.addEventListener('scroll', function () {
+  const bodyHeight = document.body.scrollHeight; // get body height
+  const windowHeight = window.innerHeight; // get window height
+  const scrollEndPos = bodyHeight - windowHeight; // get scroll end position
+  const totalScrollPercent = (window.scrollY / scrollEndPos) * 100; // get total scroll percentage
+
+  backToTopBtn.textContent = `${totalScrollPercent.toFixed(0)}%`; // set total scroll percentage on back to top button
+
+  // show back to top button when total scroll percentage is greater than 5
+  if (totalScrollPercent > 5) {
+    backToTopBtn.classList.add('show'); // add show class to back to top button
+  } else {
+    backToTopBtn.classList.remove('show'); // remove show class from back to top button
+  }
+});

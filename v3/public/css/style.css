@@ -69,6 +69,7 @@
   --transition-1: 0.25s ease;
   --transition-2: 0.5s ease;
   --transition-3: 1s ease;
+  --transition-4: 1.5s cubic-bezier(.82,-0.55,.34,1.64);
   --cubic-in: cubic-bezier(0.51, 0.03, 0.64, 0.28);
   --cubic-out: cubic-bezier(0.33, 0.85, 0.4, 0.96);
 }
@@ -934,6 +935,31 @@ body.active {
 /*-----------------------------------*\
   #BACK TO TOP
 \*-----------------------------------*/
+.back_top_btn {
+  position: fixed;
+  bottom: 30px;
+  right: -70px;
+  width: 60px;
+  height: 60px;
+  border: 1px dashed currentColor;
+  color: var(--radical-red);
+  font-size: var(--fs-11);
+  border-radius: var(--radius-circle);
+  display: grid;
+  place-items: center;
+  visibility: hidden;
+  transition: var(--transition-4);
+  z-index: 3
+}
+
+.back_top_btn.show {
+  transform: translateX(-100px);
+  visibility: visible;
+}
+
+.back_top_btn:hover {
+  color: var(--white);
+}
 
 /*-----------------------------------*\
   #CUSTOM CURSOR
