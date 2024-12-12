@@ -993,3 +993,170 @@ body.active {
 /*-----------------------------------*\
   #MEDIA QUERIES
 \*-----------------------------------*/
+/**
+ * responsive for large than 575px screen
+ */
+
+@media (min-width: 575px) {
+  /**
+   * CUSTOM PROPERTY
+   */
+  :root {
+    /**
+     * Spacing
+     */
+    --section-padding: 80px;
+  }
+  /**
+   * Reused Style
+   */
+
+  .container {
+    max-width: 540px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  :is(.header, .gallery, .category, .portfolio) .container {
+    max-width: unset;
+  }
+
+  /**
+   * Header
+   */
+
+  .navbar {
+    max-width: 500px;
+    right: -500px;
+  }
+
+  .navbar.active {
+    transform: translateX(-500px);
+  }
+
+  /**
+    * Gallery
+    */
+  .gallery_list {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 25px;
+  }
+
+  .gallery_card .btn_icon {
+    transform-origin: top right;
+    transform: scale(0);
+  }
+
+  .gallery_card:is(:hover, :focus-within) .btn_icon {
+    transform: scale(1);
+  }
+
+  .gallery_card :is(.card_title, .card_tag) {
+    transform: translateY(10px);
+    opacity: 0;
+    transition: var(--transition-2);
+  }
+
+  .gallery_card .card_tag {
+    transition-delay: 0.1s;
+  }
+
+  .gallery_card:is(:hover, :focus-within) :is(.card_title, .card_tag) {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .gallery [data-reveal] {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /**
+    * Category
+    */
+  .category_item {
+    max-width: 235px;
+  }
+
+  /**
+    * Portfolio
+    */
+  .portfolio_list {
+    display: flex;
+    column-gap: 30px;
+  }
+
+  /**
+    * Footer
+    */
+  .footer_bottom {
+    padding-block-end: 40px;
+  }
+
+  .footer_bottom .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+  }
+
+  .footer_bottom .logo {
+    margin: 0;
+  }
+
+  .copyright,
+  .social_list {
+    padding-block-end: 0;
+  }
+
+  .social_list {
+    order: 1;
+    justify-content: flex-end;
+  }
+}
+
+/**
+ * responsive for large than 768px screen
+ */
+
+@media (min-width: 768px) {
+  /**
+   * CUSTOM PROPERTY
+   */
+
+  :root {
+    /**
+     * typography
+     */
+    --fs-3: 4.5rem;
+  }
+
+  /**
+   * Reused Styles
+   */
+  .container {
+    max-width: 720px;
+  }
+
+  /**
+   * About
+   */
+
+  .about_banner {
+    max-width: 500px;
+    margin-inline: auto;
+  }
+
+  /**
+   * Services
+   */
+
+  .service_card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .service_card .card_subtitle {
+    margin-block-end: 15px;
+  }
+}
