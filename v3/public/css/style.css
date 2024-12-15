@@ -310,8 +310,6 @@ body.active {
   transform-origin: bottom;
   transition: 0.5s var(--cubic-in);
   transition-delay: 0.5s;
-
-  display: none;
 }
 
 .loading.loaded {
@@ -749,8 +747,8 @@ body.active {
   background-image: url('../images/about-quote.svg');
   background-repeat: no-repeat;
   background-size: contain;
-  width: 20%;
-  height: 20%;
+  width: 15%;
+  height: 15%;
 }
 
 .about .section_text .em {
@@ -1484,5 +1482,327 @@ body.active {
 
   .cursor.disabled {
     transform: translate(-50%, -50%) scale(0);
+  }
+}
+
+/**
+ * responsive for large than 1200px screen
+ */
+
+@media (min-width: 1200px) {
+  /**
+   * CUSTOM PROPERTY
+   */
+
+  :root {
+    /**
+     * typography
+     */
+
+    --fs-1: 10rem;
+    --fs-2: 9rem;
+    --fs-3: 6.8rem;
+    --fs-4: 3.6rem;
+    --fs-6: 2.8rem;
+  }
+
+  /**
+   * Reused Style
+   */
+
+  .container {
+    max-width: 1140px;
+  }
+
+  /**
+   * Header
+   */
+
+  .header .container {
+    padding-inline: 35px;
+  }
+
+  /**
+   * Hero
+   */
+
+  .hero {
+    padding-block: 170px 150px;
+  }
+
+  .hero .container {
+    max-width: 1250px;
+  }
+
+  .hero .wrapper {
+    --fs-2: 10rem;
+    margin-block: -10px 15px;
+  }
+
+  .hero .wrapper .strong {
+    left: 40%;
+  }
+
+  .hero_text {
+    --fs-10: 2rem;
+    font-weight: var(--fw-400);
+    letter-spacing: 8px;
+  }
+
+  .hero_banner {
+    max-width: 290px;
+  }
+
+  .hero .shape {
+    display: block;
+    top: 60%;
+    left: 0;
+  }
+
+  /**
+   * Gallery
+   */
+
+  .gallery_list {
+    gap: 50px;
+  }
+
+  .gallery_card .card_title {
+    font-weight: var(--fw-300);
+  }
+
+  /**
+   * Category
+   */
+
+  .category_list {
+    column-gap: 15px;
+  }
+
+  .category_card .card_title {
+    --fs-4: 7rem;
+  }
+
+  /**
+   * About
+   */
+
+  .about .container {
+    gap: 120px;
+  }
+
+  .about .shape-1 {
+    width: max-content;
+  }
+
+  .about .section_title {
+    margin-block-end: 70px;
+  }
+
+  .about .wrapper {
+    padding-inline-start: 80px;
+  }
+
+  .about .wrapper::before {
+    width: 35px;
+    height: 30px;
+  }
+
+  .about .section_text {
+    --fs-6: 3.2rem;
+    margin-block-end: 50px;
+  }
+
+  /**
+   * Service
+   */
+
+  .service_card {
+    padding-block: 50px;
+  }
+
+  .service_card .card_subtitle {
+    --fs-7: 2.4rem;
+  }
+
+  .service_card .img {
+    width: max-content;
+  }
+
+  .service_card .btn_icon {
+    width: 95px;
+    height: 95px;
+  }
+
+  .service_card .btn_icon svg {
+    width: 40px;
+  }
+
+  /**
+   * PORTFOLIO
+   */
+
+  .portfolio_list {
+    column-gap: 90px;
+  }
+
+  .portfolio_card {
+    margin-block-end: 100px;
+  }
+
+  .portfolio_card .card_content {
+    padding-inline: 50px;
+  }
+
+  .portfolio_card .btn_icon {
+    width: 60px;
+    height: 60px;
+    top: auto;
+    bottom: 45px;
+    right: 50px;
+    opacity: 0;
+    transition: var(--transition-2);
+  }
+
+  .portfolio_card .btn_icon svg {
+    width: 25px;
+  }
+
+  .portfolio_card:is(:hover, :focus-within) .btn_icon {
+    opacity: 1;
+  }
+
+  /**
+   * Footer
+   */
+
+  .footer_top {
+    padding-block: 300px;
+  }
+
+  .footer_top .section_title {
+    --fs-2: 8rem;
+    margin-block-start: 50px;
+  }
+
+  .footer .btn_icon {
+    width: 90px;
+    height: 90px;
+  }
+
+  .footer .btn_icon img {
+    width: 45px;
+  }
+}
+
+/**
+ * responsive for large than 1400px screen
+ */
+
+@media (min-width: 1400px) {
+  /**
+   * CUSTOM PROPERTY
+   */
+
+  :root {
+    /**
+     * typography
+     */
+
+    --fs-1: 13rem;
+    --fs-2: 10rem;
+    --fs-3: 8rem;
+  }
+
+  /**
+   * Reused Style
+   */
+
+  .container {
+    max-width: 1320px;
+  }
+
+  :is(.header, .gallery, .category, .portfolio) .container {
+    max-width: 1580px;
+  }
+
+  /**
+   * Header
+   */
+
+  .header .container {
+    padding-inline: 60px;
+  }
+
+  /**
+   * Hero
+   */
+
+  .hero .container {
+    max-width: 1500px;
+  }
+
+  .hero_content {
+    margin-inline-end: 400px;
+  }
+
+  .hero .wrapper {
+    --fs-2: 13rem;
+  }
+
+  .hero_text {
+    --fs-10: 2.4rem;
+  }
+
+  .hero_banner {
+    max-width: max-content;
+  }
+
+  /**
+   * Category
+   */
+
+  .category .container {
+    padding-inline: 40px;
+  }
+
+  .category_card .card_title {
+    --fs-4: 8rem;
+  }
+
+  /**
+   * About
+   */
+
+  .about {
+    padding-block: 180px 120px;
+  }
+
+  /**
+   * Service
+   */
+
+  .service {
+    padding-inline: 70px;
+  }
+
+  .service_card {
+    padding-block: 65px;
+  }
+
+  /**
+   * Portfolio
+   */
+
+  .portfolio .container {
+    padding-inline: 45px;
+  }
+
+  /**
+   * Footer
+   */
+
+  .footer_top .container {
+    max-width: 1200px;
   }
 }
