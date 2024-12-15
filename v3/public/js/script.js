@@ -178,3 +178,44 @@ const scrollReveal = function () {
 
 window.addEventListener('scroll', scrollReveal); // add scroll event to window
 scrollReveal(); // call scrollReveal function
+
+/**
+ * Custom Cursor Effect
+ */
+const cursor = document.querySelector('[data-cursor]'); // get cursor element
+const anchorElements = document.querySelectorAll('a'); // get all anchor elements
+const buttons = document.querySelectorAll('button'); // get all button elements
+
+// change cursorElement position based on mouse position
+document.body.addEventListener('mousemove', function (event) {
+  setTimeout(function () {
+    // set cursorElement position based on mouse position
+    cursor.style.top = `${event.clientY}px`;
+    cursor.style.left = `${event.clientX}px`;
+  }, 100);
+});
+
+// add cursor hovered class on cursorElement when mouse is hovered on anchor elements
+const hoverActive = function () {
+  cursor.classList.add('hovered'); // add hovered class to cursorElement
+};
+
+// remove cursor hovered class on cursorElement when mouse is not hovered on anchor elements
+const hoverInactive = function () {
+  cursor.classList.remove('hovered'); // remove hovered class from cursor
+};
+
+// add hover effect on cursor, when hovered on any button or hyperlink
+addEventOnElements(anchorElements, 'mouseover', hoverActive); // add mouseover event on anchor elements
+addEventOnElements(anchorElements, 'mouseout', hoverInactive); // add mouseout event on anchor elements
+addEventOnElements(buttons, 'mouseover', hoverActive); // add mouseover event on buttons
+addEventOnElements(buttons, 'mouseout', hoverInactive); // add mouseout event on buttons
+
+// add disabled class on cursorElement, when mouse is out of body
+document.body.addEventListener('mouseleave', function () {
+  cursor.classList.add('disabled'); // add disabled class to cursorElement
+});
+// remove disabled class on cursorElement, when mouse is in body
+document.body.addEventListener('mouseenter', function () {
+  cursor.classList.remove('disabled'); // remove disabled class from cursorElement
+});
