@@ -13,7 +13,6 @@
   /* Colors */
   --smokey-black: hsl(0, 0%, 7%);
   --eerie-black: hsl(0, 0%, 9%);
-  --radical-red: hsl(346, 100%, 58%);
   --brown-raw-umber: hsl(27, 55%, 39%);
   --brown-chamoisee: hsl(27, 36%, 51%);
   --brown-lion: hsl(27, 36%, 64%);
@@ -28,6 +27,16 @@
   --jet-2: hsl(0, 0%, 16%);
   --white: hsl(0, 0%, 100%);
   --black: hsl(0, 0%, 0%);
+
+  /* Accent colors */
+  --radical-red: hsl(346, 100%, 58%);
+  --cyan-teal: hsl(180, 100%, 25%);
+  --cyan-teal2: hsl(180, 100%, 50%);
+  --bright-yellow: hsl(49, 100%, 58%);
+  --bright-amber: hsl(49, 100%, 72%);
+  --dull-amber: hsl(49, 100%, 86%);
+  --electric-blue: hsl(240, 100%, 50%);
+  --electric-blue-dull: hsl(220, 90%, 60%);
 
   /* Gradient colors */
   --gradient-1: linear-gradient(180deg, transparent, var(--smokey-black));
@@ -66,6 +75,7 @@
   /* Border Radius */
   --radius-circle: 50%;
   --radius-5: 5px;
+  --radius-10: 10px;
   --radius-25: 25px;
 
   /* Transition */
@@ -686,6 +696,59 @@ body.active {
 }
 
 /*-----------------------------------*\
+  #GALLERY MODAL
+\*-----------------------------------*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal_content {
+  position: relative;
+  margin: 10% auto;
+  max-width: 80%;
+  /* height: 70%; */
+  padding: 4rem 2rem;
+  background: var(--white_a80);
+  border-radius: var(--radius-10);
+  overflow: hidden;
+}
+
+.modal_images {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.modal_images img {
+  width: 100%;
+  border-radius: var(--radius-5);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.modal_images img:hover {
+  transform: scale(1.05);
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  font-size: 25px;
+  font-weight: bold;
+  color: var(--cyan-teal);
+  cursor: pointer;
+}
+
+/*-----------------------------------*\
   #CATEGORY
 \*-----------------------------------*/
 .category {
@@ -1156,6 +1219,15 @@ body.active {
    */
   .container {
     max-width: 720px;
+  }
+
+  /**
+   * Gallery Modal
+   */
+  .modal_content {
+    padding: 2.5rem 4rem;
+    margin: 3% auto;
+    max-width: 90%;
   }
 
   /**

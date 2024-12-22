@@ -180,6 +180,66 @@ window.addEventListener('scroll', scrollReveal); // add scroll event to window
 scrollReveal(); // call scrollReveal function
 
 /**
+ * Gallery Modal Effect
+ */
+document.addEventListener('DOMContentLoaded', function () {
+  const modal = this.getElementById('imageModal');
+  const modalContent = document.querySelector('.modal_images');
+  const closeModal = document.querySelector('.close');
+
+  // create collection of images
+  const imageCollections = {
+    'The Drunken': [
+      './images/owambe_meats.jpg',
+      './images/dodo_vegetable.jpg',
+      './images/bolognese.jpg',
+      // more images...
+    ],
+    'Lettuce Entertain': [
+      './images/category-1.jpg',
+      './images/category-2.jpg',
+      './images/category-3.jpg',
+      // more images...
+    ],
+  };
+
+  // get card title elements
+  document.querySelectorAll('.card_title').forEach((title) => {
+    title.addEventListener('click', function (event) {
+      event.preventDefault(); // prevent default action
+      const cardTitle = this.textContent.trim(); // get card title text content
+
+      // clear existing images
+      modalContent.innerHTML = '';
+
+      // populate modal with images based on card title
+      if (imageCollections[cardTitle]) {
+        imageCollections[cardTitle].forEach((imageSrc) => {
+          const img = document.createElement('img');
+          img.src = imageSrc;
+          img.alt = cardTitle;
+          modalContent.appendChild(img);
+        });
+        // open modal
+        modal.style.display = 'block';
+      }
+    });
+  });
+
+  // close modal
+  closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  // close modal when clicked outside the modal content
+  window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+});
+
+/**
  * Custom Cursor Effect
  */
 const cursor = document.querySelector('[data-cursor]'); // get cursor element
