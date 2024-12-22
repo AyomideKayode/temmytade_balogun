@@ -1411,7 +1411,7 @@ body.active {
   .service_card:is(:hover, :focus-within) .img {
     opacity: 1;
     visibility: visible;
-    animation: 2s linear infinite pulse;
+    /* animation: 2s linear infinite pulse; */
   }
 
   @keyframes pulse {
