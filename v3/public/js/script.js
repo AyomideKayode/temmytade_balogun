@@ -240,6 +240,42 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /**
+ * Get Elements for Contact Form display and hide
+ * Modal Effect - Toggle
+ */
+const contactModalBtn = document.querySelector('.contact_modal_btn'); // get contact modal button
+const contactModalBtnImage = document.querySelector('.contact_modal_btn img'); // get contact modal button
+const contactModal = document.querySelector('.contact_modal'); // get contact modal
+
+// create function to toggle contact modal with the button
+const toggleContactModal = function () {
+  contactModal.classList.toggle('hidden'); // toggle hidden class on contact modal
+  contactModalBtnImage.classList.toggle('rotate'); 
+};
+
+// add click event to contact modal button
+contactModalBtn.addEventListener('click', toggleContactModal);
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && !contactModal.classList.contains('hidden')) {
+    toggleContactModal();
+  }
+});
+
+
+/**
+ * Get Form Elements
+ * Contact Form Submission Functionality
+ * Email Validation
+ */
+const form = document.querySelector('form');
+const firstName = document.getElementById('firstName');
+const lastName = document.getElementById('lastName');
+const email = document.getElementById('email');
+const subject = document.getElementById('subject');
+const message = document.getElementById('message');
+
+/**
  * Custom Cursor Effect
  */
 const cursor = document.querySelector('[data-cursor]'); // get cursor element

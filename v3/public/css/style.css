@@ -983,6 +983,33 @@ body.active {
   height: 60px;
   margin-inline: auto;
   --hover-bg-color: var(--brown-lion);
+  border: none;
+  outline: none;
+  box-shadow: 0 0 10px var(--dull-amber); /* Glow effect */
+  transition: box-shadow var(--transition-3);
+  animation: 1.5s linear infinite float;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.footer .btn_icon:hover {
+  box-shadow: 0 0 20px var(--bright-amber); /* Increase glow on hover */
+}
+
+.footer .btn_icon img {
+  transition: var(--transition-4);
+}
+
+.footer .btn_icon img.rotate {
+  transform: rotate(90deg);
 }
 
 .footer .btn_icon img {
@@ -1592,13 +1619,17 @@ form button:hover {
   }
 
   @keyframes pulse {
-    0%,
-    100% {
-      transform: scale(0.7);
-    }
-    40%,
-    80% {
+    0% {
       transform: scale(1);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     }
   }
 
