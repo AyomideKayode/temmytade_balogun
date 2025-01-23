@@ -1038,6 +1038,111 @@ body.active {
   text-align: center;
 }
 
+.hidden {
+  display: none;
+}
+
+/*-----------------------------------*\
+  #CONTACT FORM
+\*-----------------------------------*/
+.contact_form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem auto;
+  padding: 1rem 2rem;
+  font-size: 14px;
+  font-family: var(--ff-gordita);
+}
+
+form .input_box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input_box:nth-of-type(1) {
+  flex-direction: row;
+}
+
+.input_box:nth-of-type(2) {
+  flex-direction: column;
+}
+
+.input_box:nth-of-type(2) .input_field {
+  width: 100%;
+}
+
+.input_field,
+.textarea_field {
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  align-self: start;
+  margin-bottom: -8px;
+  font-family: var(--ff-recoleta);
+}
+
+.input_box .input_field {
+  width: 48.5%;
+}
+
+.field .item {
+  width: 100%;
+  margin: 0.75rem 0;
+  padding: 1.5rem;
+  color: var(--smokey-black);
+  background-color: var(--white_a75);
+  outline: none;
+  border-radius: 0.75rem;
+}
+
+.field .item:focus {
+  border: 2px solid var(--dull-amber);
+}
+
+.field.error .item {
+  border: 2px solid;
+  border-color: var(--radical-red);
+}
+
+.field .error_txt {
+  font-size: 14.5px;
+  color: var(--bright-amber);
+  text-align: left;
+  margin: -5px 0 10px;
+  display: none;
+}
+
+.field.error .error_txt {
+  display: block;
+}
+
+form .textarea_field .error_txt {
+  margin-top: -10px;
+}
+
+form button {
+  width: 48.5%;
+  background: var(--dull-amber);
+  margin: 1.25rem auto;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  outline: none;
+  border-radius: var(--radius-25);
+  font-family: var(--ff-recoleta);
+  word-spacing: 2px;
+  cursor: pointer;
+}
+
+form button:hover {
+  scale: 0.95;
+}
+
 /*-----------------------------------*\
   #BACK TO TOP
 \*-----------------------------------*/
@@ -1578,6 +1683,12 @@ body.active {
   .cursor.disabled {
     transform: translate(-50%, -50%) scale(0);
   }
+}
+
+.dev_name {
+  display: inline-block;
+  padding-left: 5px;
+  font-weight: 500;
 }
 
 /**

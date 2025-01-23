@@ -268,8 +268,9 @@ const hoverInactive = function () {
 // add hover effect on cursor, when hovered on any button or hyperlink
 addEventOnElements(anchorElements, 'mouseover', hoverActive); // add mouseover event on anchor elements
 addEventOnElements(anchorElements, 'mouseout', hoverInactive); // add mouseout event on anchor elements
-addEventOnElements(buttons, 'mouseover', hoverActive); // add mouseover event on buttons
-addEventOnElements(buttons, 'mouseout', hoverInactive); // add mouseout event on buttons
+// add mouseover event on buttons
+addEventOnElements(buttons, 'mouseover', hoverActive);
+addEventOnElements(buttons, 'mouseout', hoverInactive);
 
 // add disabled class on cursorElement, when mouse is out of body
 document.body.addEventListener('mouseleave', function () {
