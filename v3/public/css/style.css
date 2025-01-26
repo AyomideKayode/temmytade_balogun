@@ -443,7 +443,7 @@ body.active {
   color: var(--brown-lion);
 }
 
-.login_btn {
+.contact_btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -456,11 +456,15 @@ body.active {
   margin-block-end: 50px;
 }
 
-.login_btn .span {
+.contact_btn .span {
   font-weight: var(--fw-500);
 }
 
 .navbar_title {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
   font-size: var(--fs-8);
   font-weight: var(--fw-500);
   line-height: 1;
@@ -1038,6 +1042,21 @@ body.active {
   margin-inline: auto;
   max-width: max-content;
   margin-block-end: 20px;
+}
+
+.copyright_dev {
+  display: grid;
+  justify-content: center;
+  gap: 5px;
+  font-size: var(--fs-10);
+}
+
+.copyright_dev p:first-child {
+  font-family: var(--ff-recoleta);
+}
+
+.copyright_dev p:last-child {
+  font-size: 1rem;
 }
 
 .social_list {

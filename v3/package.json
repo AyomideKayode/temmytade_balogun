@@ -4,7 +4,8 @@
   "description": "Personal Photography Portfolio website for Temmytade Balogun. A Nigerian based photographer with a passion for capturing moments. With a focus on portrait, lifestyle, and event photography.",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
