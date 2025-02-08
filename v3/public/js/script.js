@@ -189,10 +189,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // create collection of images
   const imageCollections = {
-    'The Drunken': [
-      './images/owambe_meats.jpg',
-      './images/dodo_vegetable.jpg',
-      './images/bolognese.jpg',
+    'Grublane': [
+      './images/food/grublane_1.jpg',
+      './images/food/grublane_2.jpg',
+      './images/food/grublane_3.jpg',
+      './images/food/grublane_4.jpg',
+      './images/food/grublane_5.jpg',
+      './images/food/grublane_6.jpg',
+      './images/food/grublane_7.jpg',
+      './images/food/grublane_8.jpg',
       // more images...
     ],
     'Lettuce Entertain': [

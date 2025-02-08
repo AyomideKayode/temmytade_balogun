@@ -728,7 +728,7 @@ body.active {
 .modal_images {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
 .modal_images img {
@@ -821,7 +821,8 @@ body.active {
 .about .section_text .em {
   color: var(--white);
   font-weight: var(--fw-400);
-  text-decoration: underline;
+  font-family: var(--ff-recoleta);
+  /* text-decoration: underline; */
 }
 
 .about_banner {
@@ -1899,13 +1900,13 @@ form button:hover {
    */
 
   .portfolio_list {
-    column-gap: 90px;
+    column-gap: 50px;
   }
-
+  
   .portfolio_card {
-    margin-block-end: 100px;
+    margin-block-end: 70px;
   }
-
+  
   .portfolio_card .card_content {
     padding-inline: 50px;
   }
