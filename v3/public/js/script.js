@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // create collection of images
   const imageCollections = {
-    'Grublane': [
+    Grublane: [
       './images/food/grublane_1.jpg',
       './images/food/grublane_2.jpg',
       './images/food/grublane_3.jpg',
@@ -255,7 +255,7 @@ const contactModal = document.querySelector('.contact_modal'); // get contact mo
 // create function to toggle contact modal with the button
 const toggleContactModal = function () {
   contactModal.classList.toggle('hidden'); // toggle hidden class on contact modal
-  contactModalBtnImage.classList.toggle('rotate'); 
+  contactModalBtnImage.classList.toggle('rotate');
 };
 
 // add click event to contact modal button
@@ -266,7 +266,6 @@ document.addEventListener('keydown', function (e) {
     toggleContactModal();
   }
 });
-
 
 /**
  * Get Form Elements
