@@ -7,12 +7,6 @@ import { initNavbar } from "./navigation.js";
 import { initHeaderOnScroll } from "./navigation.js";
 import { initBackToTop } from "./navigation.js";
 
-// import vercel analytics inject function
-import { inject } from "@vercel/analytics"
-
-// call inject function to inject vercel analytics
-inject();
-
 initPreloader(); // call initPreloader function
 initNavbar(); // call initNavbar function
 initHeaderOnScroll(); // call initHeaderOnScroll function
