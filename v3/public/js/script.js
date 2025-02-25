@@ -255,6 +255,8 @@ addEventOnElements(anchorElements, 'mouseout', hoverInactive); // add mouseout e
 addEventOnElements(buttons, 'mouseover', hoverActive);
 addEventOnElements(buttons, 'mouseout', hoverInactive);
 
+// Reverted back to previous working commit
+
 // add disabled class on cursorElement, when mouse is out of body
 document.body.addEventListener('mouseleave', function () {
   cursor.classList.add('disabled'); // add disabled class to cursorElement
