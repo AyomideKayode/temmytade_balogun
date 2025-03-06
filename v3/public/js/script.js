@@ -1,11 +1,11 @@
 'use strict'; // use strict mode meaning that the code should be executed in strict mode
 
 // import helper functions and utilities
-import { addEventOnElements } from "./utils.js";
-import { initPreloader } from "./utils.js";
-import { initNavbar } from "./navigation.js";
-import { initHeaderOnScroll } from "./navigation.js";
-import { initBackToTop } from "./navigation.js";
+import { addEventOnElements } from './utils.js';
+import { initPreloader } from './utils.js';
+import { initNavbar } from './navigation.js';
+import { initHeaderOnScroll } from './navigation.js';
+import { initBackToTop } from './navigation.js';
 
 initPreloader(); // call initPreloader function
 initNavbar(); // call initNavbar function
@@ -264,4 +264,13 @@ document.body.addEventListener('mouseleave', function () {
 // remove disabled class on cursorElement, when mouse is in body
 document.body.addEventListener('mouseenter', function () {
   cursor.classList.remove('disabled'); // remove disabled class from cursorElement
+});
+
+// handle services section page navigation
+document.querySelectorAll('.btn_icon').forEach((button) => {
+  button.addEventListener('click', function (event) {
+    event.preventDefault(); // prevent default action
+    const category = this.getAttribute('data-category'); // get category attribute
+    window.location.href = `/${category}.html`; // redirect to respective category page
+  });
 });
