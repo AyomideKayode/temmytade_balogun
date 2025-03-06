@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temmytade Balogun: Event Photography</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
+    <!-- css links -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- custom font link -->
+    <link rel="stylesheet" href="./font/font.css" />
+    <!-- preload images -->
+    <link rel="preload" as="image" href="./images/loading_t.svg" />
+    <link rel="preload" as="image" href="./images/loading-circle.svg" />
+  </head>
+  <body id="top" data-category="event-photography">
+    <!-- #Preloading -->
+    <div class="loading" data-loading>
+      <img
+        src="./images/loading_t.svg"
+        width="55"
+        height="55"
+        alt="loading"
+        class="img"
+      />
+      <img
+        src="./images/loading-circle.svg"
+        width="70"
+        height="70"
+        alt=""
+        class="circle"
+      />
+    </div>
+
+    <!-- #Header -->
+    <header class="header" data-header>
+      <div class="container">
+        <a href="/" class="logo">
+          <img
+            src="./images/tb_logo_brown.svg"
+            width="40"
+            height="40"
+            alt="owner home"
+          />
+        </a>
+
+        <button class="nav_open_btn" aria-label="open menu" data-nav-toggler>
+          <img src="./images/menu.svg" width="17" height="17" alt="menu icon" />
+        </button>
+
+        <nav class="navbar" data-navbar>
+          <div class="navbar_top">
+            <a href="/" class="logo">
+              <img
+                src="./images/nav_logoNew.svg"
+                width="140"
+                height="40"
+                alt="owner home"
+                class="img"
+              />
+            </a>
+
+            <button
+              class="nav_close_btn"
+              aria-label="close menu"
+              data-nav-toggler
+            >
+              <span class="span one"></span>
+              <span class="span two"></span>
+            </button>
+          </div>
+
+          <ul class="navbar_list">
+            <li class="navbar_item">
+              <a href="/" class="navbar_link" data-nav-link>Home</a>
+            </li>
+            <li class="navbar_item">
+              <a href="#gallery" class="navbar_link" data-nav-link>Gallery</a>
+            </li>
+            <li class="navbar_item">
+              <a href="#about" class="navbar_link" data-nav-link>About</a>
+            </li>
+          </ul>
+
+          <a href="#contact" class="contact_btn">
+            <img
+              src="./images/Phone.svg"
+              width="21"
+              height="21"
+              alt="phone icon"
+            />
+            <span class="span">Contact Us</span>
+          </a>
+
+          <a class="navbar_title">
+            <img
+              src="./images/MapPin.svg"
+              width="30"
+              height="30"
+              alt="address icon"
+            />
+            <span>My Address</span>
+          </a>
+          <address class="navbar_text">Ikeja, Lagos, Nigeria.</address>
+
+          <p class="navbar_text">
+            Would you like to book a session?
+            <a href="tel:070-6114-7696" class="contact_link">070-6114-7696</a>
+          </p>
+        </nav>
+
+        <div class="overlay" data-nav-toggler data-overlay></div>
+      </div>
+    </header>
+
+    <div class="category_text">
+      <h1>Event Photography</h1>
+      <p>
+        Welcome to our Wedding Photography gallery. Here, we capture the most
+        beautiful moments of your special day. Our team of professional
+        photographers ensures that every precious moment is immortalized with
+        stunning visuals.
+      </p>
+      <p>
+        From the joyous smiles to the heartfelt tears, we strive to capture the
+        essence of your wedding day. Browse through our gallery to see some of
+        the magical moments we've had the honor of capturing.
+      </p>
+    </div>
+
+    <div class="category_gallery gallery" id="gallery">
+      <!-- Images will be populated here -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer_top section" id="contact">
+        <div class="container">
+          <p class="section_subtitle" data-reveal>Contact Us</p>
+
+          <h2 class="h2 section_title" data-reveal>
+            Work inquiry, Job oportunities? Send Message.
+          </h2>
+
+          <button class="ctbtn_icon contact_modal_btn" data-reveal>
+            <img
+              src="./images/arrow-forward.svg"
+              width="43"
+              height="20"
+              loading="lazy"
+              alt="arrow-forward icon"
+            />
+          </button>
+
+          <div class="contact_form">
+            <form action="#" class="form contact_modal hidden" data-reveal>
+              <div class="input_box">
+                <div class="input_field field">
+                  <label for="First Name">First Name</label>
+                  <input
+                    type="text"
+                    placeholder="John"
+                    id="firstName"
+                    class="item"
+                    autocomplete="off"
+                  />
+                  <div class="error_txt">First name can't be blank</div>
+                </div>
+                <div class="input_field field">
+                  <label for="Last Name">Last Name</label>
+                  <input
+                    type="text"
+                    placeholder="Doe"
+                    id="lastName"
+                    class="item"
+                    autocomplete="off"
+                  />
+                  <div class="error_txt">Last name can't be blank</div>
+                </div>
+              </div>
+              <div class="input_box">
+                <div class="input_field field">
+                  <label for="Email">E-mail</label>
+                  <input
+                    type="text"
+                    placeholder="johnDoe2004@gmail.com"
+                    id="email"
+                    class="item"
+                    autocomplete="off"
+                  />
+                  <div class="error_txt email">Email can't be blank</div>
+                </div>
+                <div class="input_field field">
+                  <label for="Subject">Subject</label>
+                  <input
+                    type="text"
+                    placeholder="Collaboration Inquiry"
+                    id="subject"
+                    class="item"
+                    autocomplete="off"
+                  />
+                  <div class="error_txt">Subject can't be blank</div>
+                </div>
+              </div>
+              <div class="textarea_field field">
+                <label for="Message">Message</label>
+                <textarea
+                  name=""
+                  id="message"
+                  placeholder="Hey there 👋🏽 Temmytade, I'd like to ..."
+                  class="item"
+                  autocomplete="off"
+                ></textarea>
+                <div class="error_txt">Message can't be blank</div>
+              </div>
+              <button type="submit">Send Message</button>
+            </form>
+          </div>
+
+          <img
+            src="./images/footer-1.jpg"
+            width="159"
+            height="176"
+            loading="lazy"
+            alt="photography"
+            class="abs_img abs_img-1"
+            data-reveal
+          />
+
+          <img
+            src="./images/footer-3.jpg"
+            width="265"
+            height="275"
+            loading="lazy"
+            alt="photography"
+            class="abs_img abs_img-2"
+            data-reveal
+          />
+
+          <img
+            src="./images/baby/baby_img2.jpg"
+            width="303"
+            height="272"
+            loading="lazy"
+            alt="photography"
+            class="abs_img abs_img-3"
+            data-reveal
+          />
+
+          <img
+            src="./images/footer-4.jpg"
+            width="175"
+            height="175"
+            loading="lazy"
+            alt="photography"
+            class="abs_img abs_img-4"
+            data-reveal
+          />
+
+          <img
+            src="./images/footer-shape.svg"
+            width="185"
+            height="134"
+            loading="lazy"
+            alt=""
+            class="shape"
+          />
+        </div>
+      </div>
+
+      <div class="footer_bottom">
+        <div class="container">
+          <a href="/" class="logo">
+            <img
+              src="./images/tb_logo_brown.svg"
+              width="40"
+              height="40"
+              loading="lazy"
+              alt="Temmytade home"
+            />
+          </a>
+
+          <ul class="social_list">
+            <li>
+              <a href="#" class="social_link">X.</a>
+            </li>
+
+            <li>
+              <a href="#" class="social_link">Be.</a>
+            </li>
+
+            <li>
+              <a href="#" class="social_link">Li.</a>
+            </li>
+
+            <li>
+              <a href="#" class="social_link">Fa.</a>
+            </li>
+
+            <li>
+              <a href="#" class="social_link">Insta.</a>
+            </li>
+          </ul>
+
+          <div class="copyright_dev">
+            <p class="copyright">
+              &copy; Temmytade Balogun, 2025. All Rights Reserved.
+            </p>
+            <p class="copyright">
+              Made with 🤎 by <a href="#" class="dev_name">Ayomide</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer_bg has_before">
+        <img
+          src="./images/footer-bg.jpg"
+          width="1920"
+          height="1135"
+          loading="lazy"
+          alt="photography"
+          class="img_cover"
+        />
+      </div>
+    </footer>
+
+    <!-- Back to top -->
+    <a
+      href="#top"
+      class="back_top_btn"
+      aria-label="back to top"
+      data-back-top-btn
+      >0%</a
+    >
+
+    <!-- Custom Cursor -->
+    <div class="cursor" data-cursor></div>
+
+    <script src="./js/populateGallery.js"></script>
+    <script type="module" src="./js/script.js"></script>
+  </body>
+</html>

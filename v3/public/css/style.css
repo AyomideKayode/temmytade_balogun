@@ -753,6 +753,48 @@ body.active {
 }
 
 /*-----------------------------------*\
+  #GALLERY-CATEGORY for other pages
+\*-----------------------------------*/
+.category_text {
+  margin: 2.5rem auto;
+  width: 85%;
+  text-align: center;
+}
+.category_text h1 {
+  font-family: var(--ff-recoleta);
+  text-align: center;
+  margin-top: 16px;
+}
+
+.category_text p {
+  font-family: var(--ff-gordita);
+}
+
+.category_gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1.5rem auto;
+  padding: 16px;
+  padding-block: 30px 0;
+}
+
+.category_gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  object-fit: cover;
+}
+
+.category_gallery img:hover {
+  transform: scale(1.05);
+}
+
+/*-----------------------------------*\
   #CATEGORY
 \*-----------------------------------*/
 .category {
@@ -983,13 +1025,17 @@ body.active {
   line-height: normal;
 }
 
-.footer .btn_icon {
+.footer .ctbtn_icon {
   width: 60px;
   height: 60px;
   margin-inline: auto;
-  --hover-bg-color: var(--brown-lion);
+  display: grid;
+  place-content: center;
   border: none;
   outline: none;
+  --hover-bg-color: var(--brown-lion);
+  border-radius: var(--border-radius, var(--radius-circle));
+  background-color: var(--bg-color, var(--white));
   box-shadow: 0 0 10px var(--dull-amber); /* Glow effect */
   transition: box-shadow var(--transition-3);
   animation: 1.5s linear infinite float;
@@ -1005,19 +1051,30 @@ body.active {
   }
 }
 
-.footer .btn_icon:hover {
+.footer .ctbtn_icon:hover {
   box-shadow: 0 0 20px var(--bright-amber); /* Increase glow on hover */
 }
+.ctbtn_icon path {
+  transition: var(--transition-2);
+}
 
-.footer .btn_icon img {
+.ctbtn_icon:is(:hover, :focus-visible) {
+  background-color: var(--hover-bg-color, var(--white));
+}
+
+.ctbtn_icon:is(:hover, :focus-visible) path {
+  stroke: var(--hover-text-color, var(--black));
+}
+
+.footer .ctbtn_icon img {
   transition: var(--transition-4);
 }
 
-.footer .btn_icon img.rotate {
+.footer .ctbtn_icon img.rotate {
   transform: rotate(90deg);
 }
 
-.footer .btn_icon img {
+.footer .ctbtn_icon img {
   width: 30px;
 }
 
@@ -1902,11 +1959,11 @@ form button:hover {
   .portfolio_list {
     column-gap: 50px;
   }
-  
+
   .portfolio_card {
     margin-block-end: 70px;
   }
-  
+
   .portfolio_card .card_content {
     padding-inline: 50px;
   }
