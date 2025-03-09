@@ -122,32 +122,36 @@ document.addEventListener('DOMContentLoaded', function () {
   // create collection of images
   const imageCollections = {
     Grublane: [
-      './images/food/grublane_1.jpg',
-      './images/food/grublane_2.jpg',
-      './images/food/grublane_3.jpg',
-      './images/food/grublane_4.jpg',
-      './images/food/grublane_5.jpg',
-      './images/food/grublane_6.jpg',
-      './images/food/grublane_7.jpg',
-      './images/food/grublane_8.jpg',
-      // more images...
+      './images/product/grublane_1.jpg',
+      './images/product/grublane_2.jpg',
+      './images/product/grublane_3.jpg',
+      './images/product/grublane_4.jpg',
+      './images/product/grublane_5.jpg',
+      './images/product/grublane_6.jpg',
+      './images/product/grublane_7.jpg',
+      './images/product/grublane_8.jpg',
     ],
     'Lettuce Entertain': [
       './images/category-1.jpg',
       './images/category-2.jpg',
       './images/category-3.jpg',
-      // more images...
     ],
     'The Art of Style': [
       './images/potraits/potrait_1.png',
       './images/potraits/potrait_5.png',
       './images/potraits/potrait_6.png',
-      // more images...
     ],
     'Happily Ever After in Frames': [
-      './images/potraits/wedding_1.jpg',
-      './images/potraits/wedding_2.jpg',
-      './images/potraits/wedding_3.jpg',
+      './images/wedding-photography/category-8.jpg',
+      './images/wedding-photography/footer-1.jpg',
+      './images/wedding-photography/footer-4.jpg',
+      './images/wedding-photography/gallery-6.jpg',
+      './images/wedding-photography/gallery-7.jpg',
+      './images/wedding-photography/portfolio-2.jpg',
+      './images/wedding-photography/service-1.jpg',
+      './images/wedding-photography/wedding_1.jpg',
+      './images/wedding-photography/wedding_2.jpg',
+      './images/wedding-photography/wedding_3.jpg',
     ],
   };
 
