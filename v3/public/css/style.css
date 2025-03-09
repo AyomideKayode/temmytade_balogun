@@ -767,17 +767,24 @@ body.active {
 \*-----------------------------------*/
 .category_text {
   margin: 2.5rem auto;
-  width: 85%;
+  width: 75%;
   text-align: center;
 }
+
 .category_text h1 {
-  font-family: var(--ff-recoleta);
+  color: var(--white_a80);
   text-align: center;
-  margin-top: 16px;
+  margin-top: 1.5rem;
+  font-family: var(--ff-recoleta);
+  font-size: var(--fs-4);
 }
 
 .category_text p {
-  font-family: var(--ff-gordita);
+  color: var(--white_a70);
+  font-size: var(--fs-8);
+  font-weight: var(--fw-300);
+  line-height: 1.5;
+  margin-block-end: 10px 25px;
 }
 
 .category_gallery {
@@ -970,7 +977,8 @@ body.active {
 }
 
 .portfolio .section_title {
-  margin-block-end: 60px;
+  font-size: var(--fs-3);
+  margin-block-end: 40px;
 }
 
 .portfolio_card {
@@ -1031,6 +1039,7 @@ body.active {
 }
 
 .footer_top .section_title {
+  font-size: var(--fs-3);
   margin-block: 20px 90px;
   line-height: normal;
 }
@@ -1639,6 +1648,10 @@ form button:hover {
   .category_list {
     row-gap: 0;
     justify-content: flex-start;
+  }
+
+  .category_text p {
+    font-size: var(--fs-7);
   }
 
   /**
