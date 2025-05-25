@@ -291,7 +291,7 @@ document.body.addEventListener('mouseenter', function () {
 });
 
 // handle services section page navigation
-document.querySelectorAll('.btn_icon').forEach((button) => {
+document.querySelectorAll('#services .btn_icon').forEach((button) => {
   button.addEventListener('click', function (event) {
     event.preventDefault(); // prevent default action
     const category = this.getAttribute('data-category'); // get category attribute
