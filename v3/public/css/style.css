@@ -538,7 +538,8 @@ body.active {
 .hero_text {
   font-size: var(--fs-10);
   font-weight: var(--fw-300);
-  text-transform: uppercase;
+  font-style: italic;
+  text-transform: capitalize;
   letter-spacing: 5px;
 }
 
@@ -847,7 +848,7 @@ body.active {
 \*-----------------------------------*/
 .about .container {
   display: grid;
-  gap: 45px;
+  gap: 40px;
 }
 
 .about .wrapper,
@@ -856,15 +857,21 @@ body.active {
 }
 
 .about .section_title {
-  margin-block-end: 35px;
+  margin-top: 1.5rem;
+}
+
+.about .section_subtitle {
+  padding-inline: 10px;
+  margin-block-end: 55px;
+  border-block-end: 1px solid var(--white_a9);
 }
 
 .about .section_text {
-  font-size: var(--fs-6);
+  font-size: var(--fs-7);
   color: var(--white_a70);
   font-weight: var(--fw-300);
   line-height: 1.7;
-  margin-block-end: 35px;
+  margin-block-end: 30px;
 }
 
 .about .wrapper::before {
