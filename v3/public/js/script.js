@@ -245,6 +245,88 @@ const lastName = document.getElementById('lastName');
 const email = document.getElementById('email');
 const subject = document.getElementById('subject');
 const message = document.getElementById('message');
+const result = document.querySelector('.result');
+
+// create function to validate email
+function isValidEmail() {
+  // regex for email validation
+  const emailRegex = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,3})(\.[a-z]{2,3})?$/;
+
+  const errTxtEmail = document.querySelector('.error_txt.email'); // get error text for email
+
+  // verify email value matches regex pattern
+  if (!email.value.match(emailRegex)) {
+    email.classList.add('error');
+    email.parentElement.classList.add('error');
+
+    // display appropriate error message based on email value
+    if (email.value !== '') {
+      errTxtEmail.textContent = 'Please enter a valid email address.';
+    } else {
+      errTxtEmail.textContent = 'Email is required.';
+    }
+  } else {
+    email.classList.remove('error');
+    email.parentElement.classList.remove('error');
+    errTxtEmail.textContent = '';
+  }
+}
+
+// create function to validate form inputs
+function validateInputs() {
+  const items = document.querySelectorAll('.item');
+
+  items.forEach((item) => {
+    if (item.value === '') {
+      item.classList.add('error');
+      item.parentElement.classList.add('error');
+    }
+
+    // Check email validity if the email input is not empty
+    if (items[2].value !== '') {
+      isValidEmail();
+    }
+
+    // Add event listener to the email input for real-time email validation
+    items[2].addEventListener('keyup', () => {
+      isValidEmail();
+    });
+
+    // Add event listener to each input for real-time error handling
+    item.addEventListener('keyup', () => {
+      if (item.value !== '') {
+        // Remove error styles if the input value is not empty
+        item.classList.remove('error');
+        item.parentElement.classList.remove('error');
+      } else {
+        // Add error styles if the input value is empty
+        item.classList.add('error');
+        item.parentElement.classList.add('error');
+      }
+    });
+  });
+}
+
+// Add event listener to the form for form submission
+form.addEventListener('submit', (e) => {
+  e.preventDefault(); // Prevent default form submission behavior
+
+  validateInputs(); // Check if any input fields are empty and add error styles
+
+  // Check if all input fields do not have the error class
+  if (
+    !firstName.classList.contains('error') &&
+    !lastName.classList.contains('error') &&
+    !email.classList.contains('error') &&
+    !subject.classList.contains('error') &&
+    !message.classList.contains('error')
+  ) {
+    sendEmail(); // If all input fields are valid, send the email
+  }
+
+  form.reset(); // Reset form fields after submission
+  return false; // Prevent form submission
+});
 
 /**
  * Custom Cursor Effect
