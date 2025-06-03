@@ -245,7 +245,55 @@ const lastName = document.getElementById('lastName');
 const email = document.getElementById('email');
 const subject = document.getElementById('subject');
 const message = document.getElementById('message');
-const result = document.querySelector('.result');
+const result = document.getElementById('result');
+
+// add input for Web3Forms access key
+const accessKeyInput = document.createElement('input');
+accessKeyInput.type = 'hidden'; // set input type to hidden
+accessKeyInput.name = 'access_key';
+accessKeyInput.value = 'de28c4b6-5665-49a5-a0ff-cf52c82dd664'; // set access key value
+form.appendChild(accessKeyInput); // append access key input to form
+
+// create sendEmail function with the Web3Forms API
+function sendEmail() {
+  const formData = new FormData(form);
+  // formData.append('name', `${firstName.value} ${lastName.value}`);
+  const object = Object.fromEntries(formData);
+  const json = JSON.stringify(object);
+
+  result.textContent = 'Sending...📸';
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: json,
+  })
+    .then(async (response) => {
+      let json = await response.json();
+      if (response.status === 200) {
+        result.textContent = 'Message sent successfully! 📩';
+      } else {
+        console.log(response)
+        result.textContent =
+          'Something went wrong. Please try again later.' ||
+          `Error: ${json.message} ❌`;
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      result.textContent =
+        'An error occurred while sending the message. Please try again later. ❌';
+    })
+    .finally(() => {
+      form.reset(); // reset form fields after submission
+      setTimeout(() => {
+        result.style.display = 'none'; // hide result message after 3 seconds
+      }, 3000);
+    });
+}
 
 // create function to validate email
 function isValidEmail() {
