@@ -9,15 +9,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const imageCategories = {
     'wedding-photography': [
       './images/wedding-photography/category-8.jpg',
-      './images/wedding-photography/footer-1.jpg',
-      './images/wedding-photography/footer-4.jpg',
-      './images/wedding-photography/gallery-6.jpg',
-      './images/wedding-photography/gallery-7.jpg',
-      './images/wedding-photography/portfolio-2.jpg',
-      './images/wedding-photography/service-1.jpg',
       './images/wedding-photography/wedding_1.jpg',
+      './images/wedding-photography/gallery-6.jpg',
+      './images/wedding-photography/wedding_4.jpg',
+      './images/wedding-photography/gallery-7.jpg',
       './images/wedding-photography/wedding_2.jpg',
+      './images/wedding-photography/portfolio-2.jpg',
+      './images/wedding-photography/wedding_5.jpg',
+      './images/wedding-photography/service-1.jpg',
       './images/wedding-photography/wedding_3.jpg',
+      './images/wedding-photography/wedding_7.jpg',
+      './images/wedding-photography/wedding_6.jpg',
     ],
     'event-photography': [
       './images/event-photography/event_1.jpg',
