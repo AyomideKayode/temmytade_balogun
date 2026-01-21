@@ -35,6 +35,19 @@
 
 ---
 
+## Roadmap Status
+
+| Phase | Name | Status |
+|-----|-----|-----|
+| 1 | Hybrid Bridge | ⏳ In Progress |
+| 2 | Component Atomization | ⏺ Planned |
+| 2.5 | Design System Modernization | ⏺ Planned |
+| 3 | Filesystem Bridge | ⏺ Planned |
+| 4 | Cloudinary Architecture | ⏺ Planned |
+| 5 | Production Polish | ⏺ Planned |
+
+---
+
 ## Phase 2+ — Dependency-Aware Refactor Roadmap
 
 ### Phase 1: The "Hybrid Bridge" (Foundational)
