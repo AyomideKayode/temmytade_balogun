@@ -3,130 +3,109 @@
 ## Phase 0 — Current System Blueprint
 
 ### 1. Current Architecture Map
-
 **Runtime Flow:**
 1.  **Request**: User requests `https://domain.com/`.
-2.  **Server**: Node.js/Express (`server.js`) intercepts request.
-3.  **Resolution**: Express serves static HTML files (`index.html`, `wedding-photography.html`) from the `public/` directory.
-4.  **Client**: Browser loads HTML, CSS, and Vanilla JavaScript bundles.
-5.  **Rendering**:
-    - `script.js` and `populateGallery.js` execute on `DOMContentLoaded`.
-    - Scripts manually inject DOM elements into gallery containers based on hardcoded arrays.
+2.  **Server**: Node.js/Express (`server.js`) serves static HTML files.
+3.  **Rendering**: Client browser loads HTML + Vanilla JS. Scripts manually inject DOM elements into gallery containers based on hardcoded arrays (`imageCollections`).
 
 **Responsibility Split:**
-*   **`server.js`**: Functions primarily as a static file server. It contains a "ghost" API endpoint (`/images/:category`) which is implemented but unused by the client.
-*   **`public/js/populateGallery.js`**: Acts as the de-facto "database" and "controller". It holds the hardcoded image paths (`imageCollections`) and logic to render `<img>` tags.
-*   **`public/js/script.js`**: Handles global interactions (modals, form submission) and initializes effects.
-*   **`public/js/utils.js` & `navigation.js`**: Modular utility libraries for specific UI behaviors (scroll, mobile menu).
+*   **`server.js`**: Static file server. Contains an unused "ghost" API.
+*   **`populateGallery.js`**: The de-facto "database" (hardcoded arrays) and "controller" (DOM injection).
+*   **`script.js`**: Global UI interactions (modals, scroll effects).
 
 **Image Delivery Pipeline:**
-*   **Filesystem Intent**: The folder structure (`public/images/category-name`) suggests a dynamic system where adding a file should make it visible. The backend supports this via `fs.readdir`.
-*   **Frontend Reality**: The frontend ignores the filesystem. It relies entirely on `imageCollections` objects in JavaScript files.
-*   **Divergence Cause**: Likely a rapid development compromise. The backend logic was written for scalability, but the frontend implementation reverted to manual mapping to get the visual layout working quickly without wiring up async data fetching.
+*   **Filesystem Intent**: Folders exist (`public/images/wedding`), implying dynamic availability.
+*   **Frontend Reality**: JS ignores folders; relies on manual array updates.
+*   **Divergence**: Backend scalability intent was abandoned for frontend speed-to-delivery, resulting in a brittle maintenance model.
 
 ### 2. Stability & Fragility Assessment
-
-**Stable Components (Preserve):**
-*   **Visual Assets**: The images and design assets (`/images`, `/css`) are high quality and can be migrated directly.
-*   **Core UI Interactions**: The behaviors defined in `utils.js` (scroll reveal, sticky header) are sound UX patterns, even if the implementation needs modernizing.
-*   **Form Handling**: The Web3Forms integration is stateless and easily portable.
-
-**Brittle Components (Isolate & Replace):**
-*   **Hardcoded Data**: `populateGallery.js` is the single point of failure. It requires code deploys for content updates and is prone to typos breaking image loading.
-*   **HTML Duplication**: Navigation and Footer HTML is copy-pasted across multiple `.html` files (`index.html`, `videography.html`, etc.). Changing a menu item requires editing every file.
-*   **DOM Manipulation**: Direct DOM manipulation (`document.querySelector(...)`) in `script.js` is tightly coupled to specific HTML classes, making layout changes risky.
-
-**Regression Risks:**
-*   **SEO**: Current HTML is static and indexable. Converting to a pure Client-Side SPA (React without SSR) could hurt ranking.
-*   **Performance**: The site currently uses native lazy loading. A naive React port might regress Core Web Vitals if image optimization isn't handled correctly.
+**Stable (Preserve):** Visual Assets, Core UX patterns (scroll reveal).
+**Brittle (Isolate):** Hardcoded Data Arrays (Single Point of Failure), HTML Duplication.
+**Critical Constraints:** SEO (currently static), Performance (Lazy Loading).
 
 ---
 
 ## Phase 1 — Architecture Direction Decision Framework
 
-### Option A: React (Vite/SPA) + Modern Tooling
-*   **Mechanism**: Client-side rendering. Browser downloads empty HTML + JS bundle -> JS builds UI.
-*   **Pros**: Extremely fast transition for dynamic interactions; simple hosting.
-*   **Cons (Context: Photography Portfolio)**:
-    *   **SEO**: Poor "out of the box" for image-heavy portfolios without complex hydration setup.
-    *   **Performance**: Large initial JS bundle. Images are not automatically optimized/resized, requiring a manual pipeline (Cloudinary/Sharp) or manual responsive `srcset`.
-    *   **CMS**: Requires fetching data on client-side load, causing layout shift (CLS).
-
-### Option B: Next.js (Hybrid SSR/SSG)
-*   **Mechanism**: Server-side or Build-time rendering. Browser receives fully formed HTML.
-*   **Pros**:
-    *   **SEO**: Best-in-class. Search engines see full content immediately.
-    *   **Image Optimization**: The `<Image />` component is a "killer feature" for portfolios. It automatically resizes, converts to WebP/AVIF, and prevents layout shift.
-    *   **Filesystem as CMS**: We can use `getStaticProps` to read the `public/images` folder at build time, finally realizing the original backend's intent without needing a running Node server (perfect for Vercel).
-*   **Cons**: Slightly higher learning curve than vanilla React.
-
-### Final Architecture Recommendation: **Next.js**
+### Architecture Recommendation: **Next.js (App Router) + Cloudinary**
 **Justification**:
-1.  **Product Fit**: A photography portfolio is 90% visual asset delivery. Next.js's built-in image optimization pipeline is superior to anything we could manually build in React/Vite.
-2.  **Scalability**: The "Filesystem as API" pattern in Next.js allows us to fix the data disconnect immediately (Phase 3) while preparing for a Headless CMS in the future.
-3.  **Performance**: Static Site Generation (SSG) ensures the fastest possible Time-to-First-Byte (TTFB), critical for retaining users on image-heavy sites.
+1.  **SEO & Performance**: Next.js Server Components provide the best-in-class indexing and Time-to-First-Byte (TTFB).
+2.  **Scalability**: Moving from "Hardcoded Arrays" -> "Filesystem" -> "Cloudinary" allows us to stabilize the site immediately while paving the way for a client-accessible CMS.
+3.  **Maintenance**: Offloading image hosting to Cloudinary removes the need for the client to touch the codebase or redeploy to add photos.
 
 ---
 
 ## Phase 2+ — Dependency-Aware Refactor Roadmap
 
-### Phase 1: The "Hybrid Bridge" (Bootstrapping & Static Port)
-*   **Objective**: Establish the Next.js infrastructure and migrate assets without changing the visual design or logic flows.
-*   **Architectural Rationale**: We need a stable modern environment before refactoring logic. This "lift and shift" approach minimizes risk by running the new framework with the old content structure initially.
+### Phase 1: The "Hybrid Bridge" (Foundational)
+*   **Objective**: Establish Next.js infrastructure and migrate assets without visual or logic regression.
+*   **Architectural Rationale**: A "Lift and Shift" approach minimizes risk. We establish the build pipeline (Next.js) before changing internal logic.
 *   **Scope**:
-    *   Initialize Next.js project.
-    *   Migrate `public/` assets (images, fonts, global CSS).
-    *   Port `index.html` and other pages to Next.js Pages/App Router structure.
-    *   Bridge legacy JS: Use `useEffect` to run existing DOM scripts temporarily.
-*   **Developer Replication Guide**:
+    *   Initialize Next.js (App Router).
+    *   Migrate `public/` assets and global CSS.
+    *   Port HTML pages to `page.tsx`.
+    *   Bridge legacy JS using `useEffect`.
+*   **Developer Replication**:
     ```bash
     npx create-next-app@latest v4-next --typescript --eslint --tailwind no
-    # (Tailwind: No for now to preserve current CSS exactly)
     cp -r v3/public/images v4-next/public/
     cp v3/public/css/style.css v4-next/styles/globals.css
     ```
 
-### Phase 2: Component Atomization
-*   **Objective**: Eliminate code duplication (DRY) and encapsulate UI logic.
-*   **Architectural Rationale**: Breaking the HTML monoliths into `<Navbar />`, `<Footer />`, and `<GalleryCard />` components allows for single-source updates.
+### Phase 2: Component Atomization (Transitional)
+*   **Objective**: Eliminate HTML duplication (DRY) and encapsulate UI logic.
+*   **Architectural Rationale**: We must stabilize the Component Tree (React structure) before refactoring the Styling Layer (CSS). This prevents "fighting on two fronts."
 *   **Scope**:
-    *   Extract Header and Footer into layout components.
-    *   Convert `populateGallery.js` rendering logic into a React `<Gallery />` component.
-    *   Replace `<a>` tags with `next/link` for instant client-side transitions.
+    *   Extract `<Navbar />`, `<Footer />` layouts.
+    *   Convert `populateGallery.js` logic into a `<GalleryGrid />` component.
+    *   **Constraint**: Keep using the legacy `style.css` classes. Do not rewrite styles yet.
 
-### Phase 3: Data Unification (The "Filesystem CMS")
-*   **Objective**: Connect the "Frontend Reality" to the "Filesystem Intent".
-*   **Architectural Rationale**: By using `getStaticProps` (or Server Components), we can read the directories at build time to generate the image lists. This removes the need for hardcoded arrays.
+### Phase 2.5: Design System Modernization (Transitional)
+*   **Objective**: Introduce Tailwind CSS v4 safely for new and refactored components.
+*   **Rationale**: **Deferred because** refactoring structure (Phase 2) and style (Phase 2.5) simultaneously is high-risk.
+*   **Strategy**: "Co-existence".
+    *   Install Tailwind v4.
+    *   Keep `globals.css` (legacy styles) active.
+    *   New components use Tailwind utilities.
+    *   Incrementally replace legacy CSS classes with Tailwind utilities during future iterations.
 *   **Scope**:
-    *   Write a `lib/gallery.ts` utility to scan image directories.
-    *   Pass image lists to components via props.
-    *   **Delete** the hardcoded arrays in JS files.
+    *   Configure Tailwind v4.
+    *   Refactor *one* component (e.g., `<Footer />`) to pure Tailwind to validate the pipeline.
 
-### Phase 4: Production Polish
-*   **Objective**: Achieve 100/100 Lighthouse scores.
-*   **Architectural Rationale**: Raw `<img>` tags are performance bottlenecks.
+### Phase 3: Data Unification - The Filesystem Bridge (Transitional)
+*   **Objective**: Connect Frontend Reality to Filesystem Intent (Intermediate Stability).
+*   **Rationale**: We need to stop the bleeding (manual code updates for images) *now*. Using the local filesystem as the source of truth fixes the "Disconnect" immediately without external dependencies.
 *   **Scope**:
-    *   Replace `<img>` with `next/image`.
-    *   Implement blur-up placeholders.
-    *   Refactor `script.js` DOM effects into React hooks (e.g., `framer-motion` for scroll reveal).
+    *   Create `lib/gallery-local.ts`.
+    *   Use `fs.readdir` in Server Components to generate image lists.
+    *   **Delete** hardcoded arrays in JS.
 
----
+### Phase 4: Cloud Media Architecture (Production-Grade)
+*   **Objective**: Enable Client-Managed Content and Advanced Optimization.
+*   **Rationale**: The Filesystem (Phase 3) still requires a developer to "push code" (upload files to git) to update the site. Cloudinary allows the client to upload photos via a Web UI.
+*   **Cloudinary Strategy**:
+    *   **Structure**: Folders match routes (e.g., `tadz/wedding`, `tadz/events`).
+    *   **Metadata**: Use "tags" for sub-filtering (e.g., `tag: "featured"`).
+*   **Implementation (Next.js App Router)**:
+    *   **Fetching**: Server Components call Cloudinary Admin API.
+    *   **Caching Strategy**: Use **ISR (Incremental Static Regeneration)**.
+        ```typescript
+        // lib/cloudinary.ts
+        export async function getImages(folder: string) {
+           const results = await cloudinary.search
+             .expression(`folder:tadz/${folder}`)
+             .execute();
+           return results.resources;
+        }
 
-## Detailed Phase 1 Plan (Immediate Execution)
+        // app/gallery/[category]/page.tsx
+        export const revalidate = 3600; // Cache for 1 hour (ISR)
+        ```
+    *   **Benefit**: Site is blazing fast (served from cache) but updates within an hour of client upload.
 
-1.  **Environment Setup**:
-    - Create a new directory `v4-next` (sibling to `v3`).
-    - Initialize Next.js (App Router recommended for future-proofing).
-2.  **Asset Migration**:
-    - Move `images`, `fonts`, `css` to the new project.
-    - Import global CSS in `layout.tsx`.
-3.  **Page Porting**:
-    - Convert `index.html` to `page.tsx`.
-    - Isolate the `<header>` and `<footer>` into a `components/Layout` wrapper.
-    - Copy the HTML body content into the main page component.
-4.  **Script Bridging**:
-    - Import the logic from `utils.js` and `script.js`.
-    - Wrap them in a `useEffect` hook to ensure they run only after the component mounts (client-side).
-    - *Constraint*: Do not rewrite the logic yet, just make it run.
-
-**Checkpoint**: The site looks identical to the original but is running on `localhost:3000` via Next.js.
+### Phase 5: Production Polish (Production-Grade)
+*   **Objective**: 100/100 Lighthouse & SEO Dominance.
+*   **Scope**:
+    *   Replace `<img>` with `next/image` (using Cloudinary Loader).
+    *   Generate Dynamic Sitemaps (`sitemap.ts`) based on Cloudinary categories.
+    *   Implement JSON-LD Schema for "PhotographyBusiness".
