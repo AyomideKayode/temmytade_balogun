@@ -376,7 +376,7 @@ export function initScript() {
     button.addEventListener('click', function (event) {
       event.preventDefault();
       const category = this.getAttribute('data-category');
-      window.location.href = `/${category}.html`;
+      window.location.href = `/${category}`;
     });
   });
 

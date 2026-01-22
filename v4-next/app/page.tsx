@@ -2,17 +2,11 @@
 
 import React, { useEffect } from "react";
 import { initScript } from "@/lib/legacy/script";
-import { initGallery } from "@/lib/legacy/populateGallery";
 
 export default function Home() {
   useEffect(() => {
     // Return the cleanup function from initScript
     return initScript();
-  }, []);
-
-  useEffect(() => {
-    // initGallery is safe to call even if not used on homepage
-    initGallery();
   }, []);
 
   return (
@@ -35,104 +29,6 @@ export default function Home() {
         />
       </div>
 
-      {/* Header */}
-      <header className="header" data-header>
-        <div className="container">
-          <a href="/" className="logo">
-            <img
-              src="/images/tb_logo_brown.svg"
-              width={40}
-              height={40}
-              alt="owner home"
-            />
-          </a>
-
-          <button
-            className="nav_open_btn"
-            aria-label="open menu"
-            data-nav-toggler
-          >
-            <img
-              src="/images/menu.svg"
-              width={17}
-              height={17}
-              alt="menu icon"
-            />
-          </button>
-
-          <nav className="navbar" data-navbar>
-            <div className="navbar_top">
-              <a href="/" className="logo">
-                <img
-                  src="/images/nav_logoNew.svg"
-                  width={140}
-                  height={40}
-                  alt="owner home"
-                  className="img"
-                />
-              </a>
-
-              <button
-                className="nav_close_btn"
-                aria-label="close menu"
-                data-nav-toggler
-              >
-                <span className="span one"></span>
-                <span className="span two"></span>
-              </button>
-            </div>
-
-            <ul className="navbar_list">
-              {[
-                ["Home", "/"],
-                ["Gallery", "#gallery"],
-                ["About", "#about"],
-                ["Services", "#services"],
-                ["Portfolio", "#portfolio"],
-              ].map(([label, href]) => (
-                <li key={label} className="navbar_item">
-                  <a href={href} className="navbar_link" data-nav-link>
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <a href="#contact" className="contact_btn">
-              <img
-                src="/images/Phone.svg"
-                width={21}
-                height={21}
-                alt="phone icon"
-              />
-              <span className="span">Contact Us</span>
-            </a>
-
-            <a className="navbar_title">
-              <img
-                src="/images/MapPin.svg"
-                width={30}
-                height={30}
-                alt="address icon"
-              />
-              <span>My Address</span>
-            </a>
-
-            <address className="navbar_text">
-              Ikeja, Lagos, Nigeria.
-            </address>
-
-            <p className="navbar_text">
-              Would you like to book a session?{" "}
-              <a href="tel:070-6114-7696" className="contact_link">
-                070-6114-7696
-              </a>
-            </p>
-          </nav>
-
-          <div className="overlay" data-nav-toggler data-overlay></div>
-        </div>
-      </header>
 
       <main>
         <article>
@@ -202,7 +98,7 @@ export default function Home() {
                     </h3>
                     <span className="card_tag">Food, Event</span>
                   </div>
-                  <a href="/product-marketing.html" className="btn_icon">
+                  <a href="/product-marketing" className="btn_icon">
                     <img
                       src="/images/arrow-forward.svg"
                       width={43}
@@ -390,7 +286,7 @@ export default function Home() {
                     </h3>
                     <span className="card_tag">Wedding, Event</span>
                   </div>
-                  <a href="/wedding-photography.html" className="btn_icon">
+                  <a href="/wedding-photography" className="btn_icon">
                     <img
                       src="/images/arrow-forward.svg"
                       width={43}
@@ -1216,241 +1112,6 @@ export default function Home() {
           </section>
         </article>
       </main>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="footer_top section" id="contact">
-          <div className="container">
-            <p className="section_subtitle" data-reveal>Contact Us</p>
-
-            <h2 className="h2 section_title" data-reveal>
-              Interested in Collaborating or Have a Job Opportunity? Get in Touch!
-            </h2>
-
-            <button className="ctbtn_icon contact_modal_btn" data-reveal>
-              <img
-                src="/images/arrow-forward.svg"
-                width={43}
-                height={20}
-                loading="lazy"
-                alt="arrow-forward icon"
-              />
-            </button>
-            {/* Form Element */}
-            <div className="contact_form">
-              <form method="POST" className="form contact_modal hidden" data-reveal>
-                <div className="input_box">
-                  <div className="input_field field">
-                    <label htmlFor="firstName">First Name</label>
-                    <input
-                      type="text"
-                      placeholder="Ciroma Chukwuma"
-                      id="firstName"
-                      name="firstName"
-                      className="item"
-                      autoComplete="off"
-                    />
-                    <div className="error_txt">First name can't be blank</div>
-                  </div>
-                  <div className="input_field field">
-                    <label htmlFor="lastName">Last Name</label>
-                    <input
-                      type="text"
-                      placeholder="Adekunle"
-                      id="lastName"
-                      name="lastName"
-                      className="item"
-                      autoComplete="off"
-                    />
-                    <div className="error_txt">Last name can't be blank</div>
-                  </div>
-                </div>
-                <div className="input_box">
-                  <div className="input_field field">
-                    <label htmlFor="email">E-mail</label>
-                    <input
-                      type="text"
-                      placeholder="jinadukarim123@gmail.com"
-                      id="email"
-                      name="email"
-                      className="item"
-                      autoComplete="off"
-                    />
-                    <div className="error_txt email">Email can't be blank</div>
-                  </div>
-                  <div className="input_field field">
-                    <label htmlFor="subject">Subject</label>
-                    <input
-                      type="text"
-                      placeholder="Collaboration Inquiry"
-                      id="subject"
-                      name="subject"
-                      className="item"
-                      autoComplete="off"
-                    />
-                    <div className="error_txt">Subject can't be blank</div>
-                  </div>
-                </div>
-                <div className="textarea_field field">
-                  <label htmlFor="message">Message</label>
-                  <textarea
-                    name="message"
-                    id="message"
-                    placeholder="Hey there 👋🏽 Temmytade, I'd like to ..."
-                    className="item"
-                    autoComplete="off"
-                  ></textarea>
-                  <div className="error_txt">Message can't be blank</div>
-                </div>
-                <button type="submit">Send Message</button>
-                <div id="result"></div>
-              </form>
-            </div>
-
-            <img
-              src="/images/footer-1.jpg"
-              width={159}
-              height={176}
-              loading="lazy"
-              alt="photography"
-              className="abs_img abs_img-1"
-              data-reveal
-            />
-
-            <img
-              src="/images/footer-3.jpg"
-              width={265}
-              height={275}
-              loading="lazy"
-              alt="photography"
-              className="abs_img abs_img-2"
-              data-reveal
-            />
-
-            <img
-              src="/images/baby/baby_img2.jpg"
-              width={303}
-              height={272}
-              loading="lazy"
-              alt="photography"
-              className="abs_img abs_img-3"
-              data-reveal
-            />
-
-            <img
-              src="/images/footer-4.jpg"
-              width={175}
-              height={175}
-              loading="lazy"
-              alt="photography"
-              className="abs_img abs_img-4"
-              data-reveal
-            />
-
-            <img
-              src="/images/footer-shape.svg"
-              width={185}
-              height={134}
-              loading="lazy"
-              alt=""
-              className="shape"
-            />
-          </div>
-        </div>
-
-        <div className="footer_bottom">
-          <div className="container">
-            <a href="/" className="logo">
-              <img
-                src="/images/tb_logo_brown.svg"
-                width={40}
-                height={40}
-                loading="lazy"
-                alt="Temmytade home"
-              />
-            </a>
-
-            <ul className="social_list">
-              <li>
-                <a
-                  target="_blank"
-                  href="https://x.com/iam_temmytade1?t=ZnCRGqENTavJNGxOKEEJnw&s=09"
-                  className="social_link"
-                  >X.</a
-                >
-              </li>
-
-              <li>
-                <a
-                  target="_blank"
-                  href="https://www.behance.net/temmytadebalogun"
-                  className="social_link"
-                  >Be.</a
-                >
-              </li>
-
-              <li>
-                <a
-                  target="_blank"
-                  href="https://www.linkedin.com/in/temitade-balogun-26291517b/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                  className="social_link"
-                  >Li.</a
-                >
-              </li>
-
-              <li>
-                <a
-                  target="_blank"
-                  href="https://www.facebook.com/share/1FUber2G8p/"
-                  className="social_link"
-                  >Fa.</a
-                >
-              </li>
-
-              <li>
-                <a
-                  target="_blank"
-                  href="https://www.instagram.com/temittade_balogun?igsh=MzlvaHVsM3IwNDg%3D"
-                  className="social_link"
-                  >Insta.</a
-                >
-              </li>
-            </ul>
-
-            <div className="copyright_dev">
-              <p className="copyright">
-                &copy; Temmytade Balogun, 2025. All Rights Reserved.
-              </p>
-              <p className="copyright">
-                Made with 🤎 by <a href="https://www.linkedin.com/in/ayomide-kayode-b24a22277/" className="dev_name">Ayomide</a>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="footer_bg has_before">
-          <img
-            src="/images/footer-bg.jpg"
-            width={1920}
-            height={1135}
-            loading="lazy"
-            alt="photography"
-            className="img_cover"
-          />
-        </div>
-      </footer>
-
-      {/* Back to top */}
-      <a
-        href="#top"
-        className="back_top_btn"
-        aria-label="back to top"
-        data-back-top-btn
-        >0%</a
-      >
-
-      {/* Custom Cursor */}
-      <div className="cursor" data-cursor></div>
     </>
   );
 }
