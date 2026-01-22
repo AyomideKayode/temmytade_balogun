@@ -6,15 +6,19 @@
 ---
 
 ## 1. Project Initialization
+
 - [ ] **Create Project**:
+
   ```bash
   npx create-next-app@latest v4-next --typescript --eslint --no-tailwind --app --no-src-dir --import-alias "@/*" --use-npm
   ```
+
 - [ ] **Cleanup**:
   - Delete `v4-next/app/page.module.css`.
   - Clear the contents of `v4-next/app/page.tsx` (prepare it for porting).
 
 ## 2. Asset Migration
+
 - [ ] **Copy Images**:
   - Copy folder `v3/public/images/` → `v4-next/public/images/`.
 - [ ] **Copy Fonts**:
@@ -26,6 +30,7 @@
   - Ensure `import "./globals.css";` exists in `v4-next/app/layout.tsx`.
 
 ## 3. Legacy Script Bridging
+
 - [ ] **Create Legacy Directory**:
   - Create folder `v4-next/lib/legacy/`.
 - [ ] **Copy Scripts**:
@@ -36,16 +41,18 @@
 - [ ] **Adapt Scripts (Crucial)**:
   - You cannot simply `import` these if they run immediately on load.
   - **Pattern**: Wrap the logic in an export function.
-  - *Example*:
+  - _Example_:
+
     ```javascript
     // v4-next/lib/legacy/script.js
     export function initScript() {
-       // ... paste original content here ...
-       // Ensure event listeners are attached to 'window' or 'document' safely
+      // ... paste original content here ...
+      // Ensure event listeners are attached to 'window' or 'document' safely
     }
     ```
 
 ## 4. Page Porting
+
 - [ ] **Port Index Page**:
   - Open `v3/public/index.html`.
   - Copy the content inside `<body>` (excluding `<script>` tags).
@@ -57,6 +64,7 @@
     - Change `style="--width: 450;"` to `style={{ "--width": "450" } as React.CSSProperties}`.
 - [ ] **Initialize Legacy Scripts**:
   - In `v4-next/app/page.tsx`:
+
     ```tsx
     "use client"; // Required for useEffect
     import { useEffect } from 'react';
@@ -73,6 +81,7 @@
     ```
 
 ## 5. Verification Guide
+
 - [ ] **Start Server**: `npm run dev` inside `v4-next`.
 - [ ] **Visual Check**:
   - Does the font load correctly?
@@ -86,6 +95,8 @@
   - Open DevTools. Are there any red errors? (Ignore generic hydration warnings for now, focus on 404s).
 
 ---
+
 **Pitfalls to Watch**:
-*   **Image Paths**: CSS `url()` paths are the #1 cause of breakage. In Next.js, `/images/foo.jpg` resolves to `public/images/foo.jpg`.
-*   **Window Object**: If legacy scripts access `window` immediately, Next.js will crash during build/SSR. Ensure they are inside `useEffect`.
+
+- **Image Paths**: CSS `url()` paths are the #1 cause of breakage. In Next.js, `/images/foo.jpg` resolves to `public/images/foo.jpg`.
+- **Window Object**: If legacy scripts access `window` immediately, Next.js will crash during build/SSR. Ensure they are inside `useEffect`.

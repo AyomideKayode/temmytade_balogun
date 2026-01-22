@@ -1,0 +1,1621 @@
+"use client";
+
+import { useEffect } from "react";
+import { initScript } from "@/lib/legacy/script";
+import { initGallery } from "@/lib/legacy/populateGallery";
+
+export default function Home() {
+  useEffect(() => {
+    initScript();
+    initGallery();
+  }, []);
+
+  return (
+    <body className="active" id="top">
+      {/* Preloading */}
+      <div className="loading" data-loading>
+        <img
+          src="./images/loading_t.svg"
+          width={55}
+          height={55}
+          alt="loading"
+          className="img"
+        />
+        <img
+          src="./images/loading-circle.svg"
+          width={70}
+          height={70}
+          alt=""
+          className="circle"
+        />
+      </div>
+
+      {/* Header */}
+      <header className="header" data-header>
+        <div className="container">
+          <a href="/" className="logo">
+            <img
+              src="./images/tb_logo_brown.svg"
+              width={40}
+              height={40}
+              alt="owner home"
+            />
+          </a>
+
+          <button
+            className="nav_open_btn"
+            aria-label="open menu"
+            data-nav-toggler
+          >
+            <img
+              src="./images/menu.svg"
+              width={17}
+              height={17}
+              alt="menu icon"
+            />
+          </button>
+
+          <nav className="navbar" data-navbar>
+            <div className="navbar_top">
+              <a href="/" className="logo">
+                <img
+                  src="./images/nav_logoNew.svg"
+                  width={140}
+                  height={40}
+                  alt="owner home"
+                  className="img"
+                />
+              </a>
+
+              <button
+                className="nav_close_btn"
+                aria-label="close menu"
+                data-nav-toggler
+              >
+                <span className="span one"></span>
+                <span className="span two"></span>
+              </button>
+            </div>
+
+            <ul className="navbar_list">
+              {[
+                ["Home", "/"],
+                ["Gallery", "#gallery"],
+                ["About", "#about"],
+                ["Services", "#services"],
+                ["Portfolio", "#portfolio"],
+              ].map(([label, href]) => (
+                <li key={label} className="navbar_item">
+                  <a href={href} className="navbar_link" data-nav-link>
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <a href="#contact" className="contact_btn">
+              <img
+                src="./images/Phone.svg"
+                width={21}
+                height={21}
+                alt="phone icon"
+              />
+              <span className="span">Contact Us</span>
+            </a>
+
+            <a className="navbar_title">
+              <img
+                src="./images/MapPin.svg"
+                width={30}
+                height={30}
+                alt="address icon"
+              />
+              <span>My Address</span>
+            </a>
+
+            <address className="navbar_text">
+              Ikeja, Lagos, Nigeria.
+            </address>
+
+            <p className="navbar_text">
+              Would you like to book a session?{" "}
+              <a href="tel:070-6114-7696" className="contact_link">
+                070-6114-7696
+              </a>
+            </p>
+          </nav>
+
+          <div className="overlay" data-nav-toggler data-overlay></div>
+        </div>
+      </header>
+
+      <main>
+        <article>
+          {/* Hero */}
+          <section className="section hero" id="home" aria-label="home">
+            <div className="container">
+              <img
+                src="./images/hero_t_banner.png"
+                width={322}
+                height={322}
+                alt=""
+                className="hero_banner"
+              />
+
+              <div className="hero_content">
+                <h1 className="h1 hero_title">Tadz Media Concepts</h1>
+
+                <div className="wrapper h2">
+                  {[
+                    "Photographer",
+                    "Shutterbug",
+                    "Cameraman",
+                    "Radiant Portraits",
+                  ].map((text) => (
+                    <strong key={text} className="strong" data-letter-effect>
+                      {text}
+                    </strong>
+                  ))}
+                </div>
+
+                <p className="hero_text">
+                  Refined. Relatable. Remarkable.
+                </p>
+              </div>
+            </div>
+
+            <img
+              src="/images/hero-shape.svg"
+              width={211}
+              height={189}
+              alt=""
+              className="shape"
+            />
+          </section>
+
+          {/* The rest of your sections (Gallery, Category, About, Services, Portfolio, Footer)
+              follow the exact same conversion rules shown above.
+              They can be copied directly with:
+              - class → className
+              - for → htmlFor
+              - SVG attributes camelCased */}
+        </article>
+      </main>
+    </body>
+  );
+}
+
+
+    // <!-- #Preloading -->
+    // <div class="loading" data-loading>
+    //   <img
+    //     src="./images/loading_t.svg"
+    //     width="55"
+    //     height="55"
+    //     alt="loading"
+    //     class="img"
+    //   />
+    //   <img
+    //     src="./images/loading-circle.svg"
+    //     width="70"
+    //     height="70"
+    //     alt=""
+    //     class="circle"
+    //   />
+    // </div>
+
+    // <!-- #Header -->
+    // <header class="header" data-header>
+    //   <div class="container">
+    //     <a href="/" class="logo">
+    //       <img
+    //         src="./images/tb_logo_brown.svg"
+    //         width="40"
+    //         height="40"
+    //         alt="owner home"
+    //       />
+    //     </a>
+
+    //     <button class="nav_open_btn" aria-label="open menu" data-nav-toggler>
+    //       <img src="./images/menu.svg" width="17" height="17" alt="menu icon" />
+    //     </button>
+
+    //     <nav class="navbar" data-navbar>
+    //       <div class="navbar_top">
+    //         <a href="/" class="logo">
+    //           <img
+    //             src="./images/nav_logoNew.svg"
+    //             width="140"
+    //             height="40"
+    //             alt="owner home"
+    //             class="img"
+    //           />
+    //         </a>
+
+    //         <button
+    //           class="nav_close_btn"
+    //           aria-label="close menu"
+    //           data-nav-toggler
+    //         >
+    //           <span class="span one"></span>
+    //           <span class="span two"></span>
+    //         </button>
+    //       </div>
+
+    //       <ul class="navbar_list">
+    //         <li class="navbar_item">
+    //           <a href="/" class="navbar_link" data-nav-link>Home</a>
+    //         </li>
+    //         <li class="navbar_item">
+    //           <a href="#gallery" class="navbar_link" data-nav-link>Gallery</a>
+    //         </li>
+    //         <li class="navbar_item">
+    //           <a href="#about" class="navbar_link" data-nav-link>About</a>
+    //         </li>
+    //         <li class="navbar_item">
+    //           <a href="#services" class="navbar_link" data-nav-link>Services</a>
+    //         </li>
+    //         <li class="navbar_item">
+    //           <a href="#portfolio" class="navbar_link" data-nav-link
+    //             >Portfolio</a
+    //           >
+    //         </li>
+    //         <!-- <li class="navbar_item">
+    //           <a href="#contact" class="navbar_link" data-nav-link
+    //             >Contact Us</a
+    //           >
+    //         </li> -->
+    //       </ul>
+
+    //       <a href="#contact" class="contact_btn">
+    //         <img
+    //           src="./images/Phone.svg"
+    //           width="21"
+    //           height="21"
+    //           alt="phone icon"
+    //         />
+    //         <span class="span">Contact Us</span>
+    //       </a>
+
+    //       <a class="navbar_title">
+    //         <img
+    //           src="./images/MapPin.svg"
+    //           width="30"
+    //           height="30"
+    //           alt="address icon"
+    //         />
+    //         <span>My Address</span>
+    //       </a>
+    //       <address class="navbar_text">Ikeja, Lagos, Nigeria.</address>
+
+    //       <p class="navbar_text">
+    //         Would you like to book a session?
+    //         <a href="tel:070-6114-7696" class="contact_link">070-6114-7696</a>
+    //       </p>
+    //     </nav>
+
+    //     <div class="overlay" data-nav-toggler data-overlay></div>
+    //   </div>
+    // </header>
+
+    // <main>
+    //   <article>
+    //     <!-- #Hero -->
+    //     <section class="section hero" id="home" aria-label="home">
+    //       <div class="container">
+    //         <img
+    //           src="./images/hero_t_banner.png"
+    //           width="322"
+    //           height="322"
+    //           alt=""
+    //           class="hero_banner"
+    //         />
+
+    //         <div class="hero_content">
+    //           <h1 class="h1 hero_title">Tadz Media Concepts</h1>
+
+    //           <div class="wrapper h2">
+    //             <strong class="strong" data-letter-effect>Photographer</strong>
+    //             <strong class="strong" data-letter-effect>Shutterbug</strong>
+    //             <strong class="strong" data-letter-effect>Cameraman</strong>
+    //             <strong class="strong" data-letter-effect
+    //               >Radiant Portraits</strong
+    //             >
+    //           </div>
+
+    //           <!-- <p class="hero_text">6+ Years Of Experience</p> -->
+    //           <p class="hero_text">Refined. Relatable. Remarkable.</p>
+    //           <!-- <p class="hero_text">Timeless Visuals. 6+ Years of Capturing the Extraordinary.</p> -->
+    //         </div>
+    //       </div>
+
+    //       <img
+    //         src="./images/hero-shape.svg"
+    //         width="211"
+    //         height="189"
+    //         alt=""
+    //         class="shape"
+    //       />
+    //     </section>
+
+    //     <!-- Gallery -->
+    //     <section class="section gallery" id="gallery">
+    //       <ul class="gallery_list">
+    //         <li class="gallery_item" data-reveal>
+    //           <div class="gallery_card">
+    //             <figure
+    //               class="card_banner img_holder has_before"
+    //               style="--width: 450; --height: 625"
+    //             >
+    //               <img
+    //                 src="./images/grublane1.jpg"
+    //                 width="450"
+    //                 height="625"
+    //                 loading="lazy"
+    //                 alt="The Drunken"
+    //                 class="img_cover"
+    //               />
+    //             </figure>
+    //             <div class="card_content">
+    //               <h3 class="h6">
+    //                 <a href="#" class="card_title">Grublane</a>
+    //               </h3>
+    //               <span class="card_tag">Food, Event</span>
+    //             </div>
+    //             <a href="./product-marketing.html" class="btn_icon">
+    //               <img
+    //                 src="./images/arrow-forward.svg"
+    //                 width="43"
+    //                 height="20"
+    //                 loading="lazy"
+    //                 alt="arrow-forward icon"
+    //               />
+    //             </a>
+    //           </div>
+    //           <div class="gallery_card">
+    //             <figure
+    //               class="card_banner img_holder has_before"
+    //               style="--width: 450; --height: 625"
+    //             >
+    //               <img
+    //                 src="./images/gallery-2.jpg"
+    //                 width="450"
+    //                 height="625"
+    //                 loading="lazy"
+    //                 alt="Lettuce Entertain"
+    //                 class="img_cover"
+    //               />
+    //             </figure>
+    //             <div class="card_content">
+    //               <h3 class="h6">
+    //                 <a href="#" class="card_title">Lettuce Entertain</a>
+    //               </h3>
+    //               <span class="card_tag">Landscape</span>
+    //             </div>
+    //             <a href="#" class="btn_icon">
+    //               <img
+    //                 src="./images/arrow-forward.svg"
+    //                 width="43"
+    //                 height="20"
+    //                 loading="lazy"
+    //                 alt="arrow-forward icon"
+    //               />
+    //             </a>
+    //           </div>
+    //         </li>
+    //         <li class="gallery_item" data-reveal>
+    //           <div class="gallery_card">
+    //             <figure
+    //               class="card_banner img_holder has_before"
+    //               style="--width: 450; --height: 625"
+    //             >
+    //               <img
+    //                 src="./images/potraits/potrait_6.png"
+    //                 width="450"
+    //                 height="625"
+    //                 loading="lazy"
+    //                 alt="The Art of Style"
+    //                 class="img_cover"
+    //               />
+    //             </figure>
+    //             <div class="card_content">
+    //               <h3 class="h6">
+    //                 <a href="#" class="card_title">The Art of Style</a>
+    //               </h3>
+    //               <span class="card_tag">Model, Fashion</span>
+    //             </div>
+    //             <a href="#" class="btn_icon">
+    //               <img
+    //                 src="./images/arrow-forward.svg"
+    //                 width="43"
+    //                 height="20"
+    //                 loading="lazy"
+    //                 alt="arrow-forward icon"
+    //               />
+    //             </a>
+    //           </div>
+    //           <div class="gallery_card">
+    //             <figure
+    //               class="card_banner img_holder has_before"
+    //               style="--width: 450; --height: 625"
+    //             >
+    //               <img
+    //                 src="./images/gallery-4.jpg"
+    //                 width="450"
+    //                 height="625"
+    //                 loading="lazy"
+    //                 alt="Juan More Taco"
+    //                 class="img_cover"
+    //               />
+    //             </figure>
+    //             <div class="card_content">
+    //               <h3 class="h6">
+    //                 <a href="#" class="card_title">Juan More Taco</a>
+    //               </h3>
+    //               <span class="card_tag">Architecture, Event</span>
+    //             </div>
+    //             <a href="#" class="btn_icon">
+    //               <img
+    //                 src="./images/arrow-forward.svg"
+    //                 width="43"
+    //                 height="20"
+    //                 loading="lazy"
+    //                 alt="arrow-forward icon"
+    //               />
+    //             </a>
+    //           </div>
+    //         </li>
+    //         <li class="gallery_item" data-reveal>
+    //           <div class="gallery_card">
+    //             <figure
+    //               class="card_banner img_holder has_before"
+    //               style="--width: 450; --height: 625"
+    //             >
+    //               <img
+    //                 src="./images/potraits/potrait_12.jpg"
+    //                 width="450"
+    //                 height="625"
+    //                 loading="lazy"
+    //                 alt="Moments in Motion"
+    //                 class="img_cover"
+    //               />
+    //             </figure>
+    //             <div class="card_content">
+    //               <h3 class="h6">
+    //                 <a href="#" class="card_title">Moments in Motion</a>
+    //               </h3>
+    //               <span class="card_tag">People, Film</span>
+    //             </div>
+    //             <a href="#" class="btn_icon">
+    //               <img
+    //                 src="./images/arrow-forward.svg"
+    //                 width="43"
+    //                 height="20"
+    //                 loading="lazy"
+    //                 alt="arrow-forward icon"
+    //               />
+    //             </a>
+    //           </div>
+    //           <div class="gallery_card">
+    //             <figure
+    //               class="card_banner img_holder has_before"
+    //               style="--width: 450; --height: 625"
+    //             >
+    //               <img
+    //                 src="./images/gallery-6.jpg"
+    //                 width="450"
+    //                 height="625"
+    //                 loading="lazy"
+    //                 alt="Cookie Monstah"
+    //                 class="img_cover"
+    //               />
+    //             </figure>
+    //             <div class="card_content">
+    //               <h3 class="h6">
+    //                 <a href="#" class="card_title">Cookie Monstah</a>
+    //               </h3>
+    //               <span class="card_tag">Wedding, Event</span>
+    //             </div>
+    //             <a href="#" class="btn_icon">
+    //               <img
+    //                 src="./images/arrow-forward.svg"
+    //                 width="43"
+    //                 height="20"
+    //                 loading="lazy"
+    //                 alt="arrow-forward icon"
+    //               />
+    //             </a>
+    //           </div>
+    //         </li>
+    //         <li class="gallery_item" data-reveal>
+    //           <div class="gallery_card">
+    //             <figure
+    //               class="card_banner img_holder has_before"
+    //               style="--width: 450; --height: 625"
+    //             >
+    //               <img
+    //                 src="./images/wedding-photography/wedding_1.jpg"
+    //                 width="450"
+    //                 height="625"
+    //                 loading="lazy"
+    //                 alt="Happily Ever After in Frames"
+    //                 class="img_cover"
+    //               />
+    //             </figure>
+    //             <div class="card_content">
+    //               <h3 class="h6">
+    //                 <a href="#" class="card_title"
+    //                   >Happily Ever After in Frames</a
+    //                 >
+    //               </h3>
+    //               <span class="card_tag">Wedding, Event</span>
+    //             </div>
+    //             <a href="./wedding-photography.html" class="btn_icon">
+    //               <img
+    //                 src="./images/arrow-forward.svg"
+    //                 width="43"
+    //                 height="20"
+    //                 loading="lazy"
+    //                 alt="arrow-forward icon"
+    //               />
+    //             </a>
+    //           </div>
+    //           <div class="gallery_card">
+    //             <figure
+    //               class="card_banner img_holder has_before"
+    //               style="--width: 450; --height: 625"
+    //             >
+    //               <img
+    //                 src="./images/gallery-8.jpg"
+    //                 width="450"
+    //                 height="625"
+    //                 loading="lazy"
+    //                 alt="The Lockhart Bar"
+    //                 class="img_cover"
+    //               />
+    //             </figure>
+    //             <div class="card_content">
+    //               <h3 class="h6">
+    //                 <a href="#" class="card_title">The Lockhart Bar</a>
+    //               </h3>
+    //               <span class="card_tag">Health & Wellness</span>
+    //             </div>
+    //             <a href="#" class="btn_icon">
+    //               <img
+    //                 src="./images/arrow-forward.svg"
+    //                 width="43"
+    //                 height="20"
+    //                 loading="lazy"
+    //                 alt="arrow-forward icon"
+    //               />
+    //             </a>
+    //           </div>
+    //         </li>
+    //       </ul>
+
+    //       <a href="#service" class="scroll_down">
+    //         <img
+    //           src="./images/scroll-down.svg"
+    //           width="40"
+    //           height="66"
+    //           loading="lazy"
+    //           alt="mouse scroll"
+    //         />
+    //       </a>
+
+    //       <img
+    //         src="./images/gallery-shape.svg"
+    //         width="220"
+    //         height="78"
+    //         loading="lazy"
+    //         alt=""
+    //         class="shape"
+    //       />
+    //     </section>
+
+    //     <!-- Gallery Modal -->
+    //     <div id="imageModal" class="modal">
+    //       <div class="modal_content">
+    //         <span class="close">&times;</span>
+    //         <div class="modal_images">
+    //           <!-- Will load images dynamically here when card_title is clicked -->
+    //         </div>
+    //       </div>
+    //     </div>
+
+    //     <!-- Category -->
+    //     <section class="section category" aria-label="photography category">
+    //       <div class="container">
+    //         <ul class="category_list">
+    //           <li class="category_item" data-reveal>
+    //             <a href="#" class="category_card">
+    //               <h3 class="h4 card_title">Landscape,</h3>
+
+    //               <figure
+    //                 class="card_banner img_holder"
+    //                 style="--width: 600; --height: 690"
+    //               >
+    //                 <img
+    //                   src="./images/category-1.jpg"
+    //                   width="600"
+    //                   height="690"
+    //                   loading="lazy"
+    //                   alt="Landscape"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+    //             </a>
+    //           </li>
+
+    //           <li class="category_item" data-reveal>
+    //             <a href="#" class="category_card">
+    //               <h3 class="h4 card_title">Model,</h3>
+
+    //               <figure
+    //                 class="card_banner img_holder"
+    //                 style="--width: 600; --height: 690"
+    //               >
+    //                 <img
+    //                   src="./images/category-2.jpg"
+    //                   width="600"
+    //                   height="690"
+    //                   loading="lazy"
+    //                   alt="Model"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+    //             </a>
+    //           </li>
+
+    //           <li class="category_item" data-reveal>
+    //             <a href="#" class="category_card">
+    //               <h3 class="h4 card_title">Street,</h3>
+
+    //               <figure
+    //                 class="card_banner img_holder"
+    //                 style="--width: 600; --height: 690"
+    //               >
+    //                 <img
+    //                   src="./images/category-3.jpg"
+    //                   width="600"
+    //                   height="690"
+    //                   loading="lazy"
+    //                   alt="Street"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+    //             </a>
+    //           </li>
+
+    //           <li class="category_item" data-reveal>
+    //             <a href="#" class="category_card">
+    //               <h3 class="h4 card_title">Product,</h3>
+
+    //               <figure
+    //                 class="card_banner img_holder"
+    //                 style="--width: 600; --height: 690"
+    //               >
+    //                 <img
+    //                   src="./images/category-4.jpg"
+    //                   width="600"
+    //                   height="690"
+    //                   loading="lazy"
+    //                   alt="Product"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+    //             </a>
+    //           </li>
+
+    //           <li class="category_item" data-reveal>
+    //             <a href="#" class="category_card">
+    //               <h3 class="h4 card_title">Fashion,</h3>
+
+    //               <figure
+    //                 class="card_banner img_holder"
+    //                 style="--width: 600; --height: 690"
+    //               >
+    //                 <img
+    //                   src="./images/potraits/potrait_5.png"
+    //                   width="600"
+    //                   height="690"
+    //                   loading="lazy"
+    //                   alt="Fashion"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+    //             </a>
+    //           </li>
+
+    //           <li class="category_item" data-reveal>
+    //             <a href="#" class="category_card">
+    //               <h3 class="h4 card_title">Film,</h3>
+
+    //               <figure
+    //                 class="card_banner img_holder"
+    //                 style="--width: 600; --height: 690"
+    //               >
+    //                 <img
+    //                   src="./images/category-5.jpg"
+    //                   width="600"
+    //                   height="690"
+    //                   loading="lazy"
+    //                   alt="Film"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+    //             </a>
+    //           </li>
+
+    //           <li class="category_item" data-reveal>
+    //             <a href="#" class="category_card">
+    //               <h3 class="h4 card_title">Architecture,</h3>
+
+    //               <figure
+    //                 class="card_banner img_holder"
+    //                 style="--width: 600; --height: 690"
+    //               >
+    //                 <img
+    //                   src="./images/category-6.jpg"
+    //                   width="600"
+    //                   height="690"
+    //                   loading="lazy"
+    //                   alt="Architecture"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+    //             </a>
+    //           </li>
+
+    //           <li class="category_item" data-reveal>
+    //             <a href="#" class="category_card">
+    //               <h3 class="h4 card_title">Wedding,</h3>
+
+    //               <figure
+    //                 class="card_banner img_holder"
+    //                 style="--width: 600; --height: 690"
+    //               >
+    //                 <img
+    //                   src="./images/category-8.jpg"
+    //                   width="600"
+    //                   height="690"
+    //                   loading="lazy"
+    //                   alt="Wedding"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+    //             </a>
+    //           </li>
+
+    //           <li class="category_item" data-reveal>
+    //             <a href="#" class="category_card">
+    //               <h3 class="h4 card_title">Event,</h3>
+
+    //               <figure
+    //                 class="card_banner img_holder"
+    //                 style="--width: 600; --height: 690"
+    //               >
+    //                 <img
+    //                   src="./images/product/12baskets_8.jpg"
+    //                   width="600"
+    //                   height="690"
+    //                   loading="lazy"
+    //                   alt="Event"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+    //             </a>
+    //           </li>
+
+    //           <li class="category_item" data-reveal>
+    //             <a href="#" class="category_card">
+    //               <h3 class="h4 card_title">People,</h3>
+
+    //               <figure
+    //                 class="card_banner img_holder"
+    //                 style="--width: 600; --height: 690"
+    //               >
+    //                 <img
+    //                   src="./images/potraits/potrait_3.png"
+    //                   width="600"
+    //                   height="690"
+    //                   loading="lazy"
+    //                   alt="People"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+    //             </a>
+    //           </li>
+
+    //           <li class="category_item" data-reveal>
+    //             <a href="#" class="category_card">
+    //               <h3 class="h4 card_title">Food,</h3>
+
+    //               <figure
+    //                 class="card_banner img_holder"
+    //                 style="--width: 600; --height: 690"
+    //               >
+    //                 <img
+    //                   src="./images/product/12baskets_1.jpg"
+    //                   width="600"
+    //                   height="690"
+    //                   loading="lazy"
+    //                   alt="Food"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+    //             </a>
+    //           </li>
+
+    //           <li class="category_item" data-reveal>
+    //             <a href="#" class="category_card">
+    //               <h3 class="h4 card_title">Health & Wellness.</h3>
+
+    //               <figure
+    //                 class="card_banner img_holder"
+    //                 style="--width: 600; --height: 690"
+    //               >
+    //                 <img
+    //                   src="./images/product/grublane_3.jpg"
+    //                   width="600"
+    //                   height="690"
+    //                   loading="lazy"
+    //                   alt="Health & Wellnes"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+    //             </a>
+    //           </li>
+    //         </ul>
+    //       </div>
+    //     </section>
+
+    //     <!-- About -->
+    //     <section class="section about" id="about" aria-label="about me">
+    //       <p class="section_subtitle container" id="about-me">
+    //         Vision. Story. Detail.
+    //       </p>
+    //       <div class="container">
+    //         <div class="about_content">
+    //           <h4 class="h4 section_title" data-reveal="right">
+    //             Here at Tadz Media Concepts
+    //           </h4>
+
+    //           <div class="wrapper has_before" data-reveal="right">
+    //             <!-- <p class="section_text">
+    //               A passionate
+    //               <em class="em">photographer</em>
+    //               with over
+    //               <em class="em">6 years</em> of experience in capturing
+    //               timeless moments. Let's create something unforgettable
+    //               together.
+    //             </p> -->
+    //             <p class="section_text">
+    //               We transform fleeting moments into lasting impressions. With
+    //               over <em class="em">6 years</em> of industry expertise, our
+    //               lens is tuned to the art of storytelling — capturing people,
+    //               products, and places with elegance and intent. Whether it’s a
+    //               wedding, a brand launch, or a personal milestone, our mission
+    //               remains the same: to craft compelling visuals that resonate
+    //               and endure.
+    //             </p>
+
+    //             <img
+    //               src="./images/signature.png"
+    //               width="151"
+    //               height="92"
+    //               loading="lazy"
+    //               alt="signature"
+    //               class="img"
+    //             />
+    //           </div>
+    //         </div>
+
+    //         <figure class="about_banner" data-reveal="left">
+    //           <div
+    //             class="img_holder has_before"
+    //             style="--width: 512; --height: 684"
+    //           >
+    //             <img
+    //               src="./images/potraits/self.png"
+    //               width="512"
+    //               height="684"
+    //               loading="lazy"
+    //               alt="Temmytade Balogun"
+    //               class="img_cover"
+    //             />
+    //           </div>
+
+    //           <img
+    //             src="./images/about_banner3.png"
+    //             width="178"
+    //             height="178"
+    //             loading="lazy"
+    //             alt=""
+    //             class="shape shape-1"
+    //             data-reveal="left"
+    //           />
+
+    //           <img
+    //             src="./images/about-shape-2.svg"
+    //             width="659"
+    //             height="653"
+    //             loading="lazy"
+    //             alt=""
+    //             class="shape shape-2"
+    //           />
+    //         </figure>
+
+    //         <img
+    //           src="./images/about-shape-3.svg"
+    //           width="239"
+    //           height="232"
+    //           loading="lazy"
+    //           alt=""
+    //           class="shape shape-3"
+    //         />
+    //       </div>
+    //     </section>
+
+    //     <!-- Services -->
+    //     <section
+    //       class="section service"
+    //       id="services"
+    //       aria-labelledby="service-label"
+    //     >
+    //       <p class="section_subtitle container" id="service-label">
+    //         What We Do
+    //       </p>
+
+    //       <ul class="service_list">
+    //         <li data-reveal>
+    //           <div class="service_card container">
+    //             <img
+    //               src="./images/service-1.jpg"
+    //               width="340"
+    //               height="380"
+    //               loading="lazy"
+    //               alt="Wedding Photography"
+    //               class="img"
+    //             />
+
+    //             <div>
+    //               <h3 class="h3 card_title">Wedding Photography</h3>
+
+    //               <p class="card_subtitle">
+    //                 Capturing the magic and romance of your special day with
+    //                 timeless elegance.
+    //               </p>
+    //             </div>
+
+    //             <a
+    //               href="#"
+    //               class="btn_icon"
+    //               aria-label="See more"
+    //               data-category="wedding-photography"
+    //             >
+    //               <svg
+    //                 xmlns="http://www.w3.org/2000/svg"
+    //                 width="43"
+    //                 height="20"
+    //                 viewBox="0 0 43 20"
+    //                 fill="none"
+    //               >
+    //                 <path d="M0 10H41" stroke="white" stroke-width="2" />
+    //                 <path
+    //                   d="M33 1L41.9 10.2727L33 19"
+    //                   stroke="white"
+    //                   stroke-width="2"
+    //                 />
+    //               </svg>
+    //             </a>
+    //           </div>
+    //         </li>
+
+    //         <li data-reveal>
+    //           <div class="service_card container">
+    //             <img
+    //               src="./images/service-3.jpg"
+    //               width="340"
+    //               height="380"
+    //               loading="lazy"
+    //               alt="Product Marketing"
+    //               class="img"
+    //             />
+
+    //             <div>
+    //               <h3 class="h3 card_title">Product Marketing</h3>
+
+    //               <p class="card_subtitle">
+    //                 Showcasing your products with stunning visuals that
+    //                 captivate and engage.
+    //               </p>
+    //             </div>
+
+    //             <a
+    //               href="#"
+    //               class="btn_icon"
+    //               aria-label="See more"
+    //               data-category="product-marketing"
+    //             >
+    //               <svg
+    //                 xmlns="http://www.w3.org/2000/svg"
+    //                 width="43"
+    //                 height="20"
+    //                 viewBox="0 0 43 20"
+    //                 fill="none"
+    //               >
+    //                 <path d="M0 10H41" stroke="white" stroke-width="2" />
+    //                 <path
+    //                   d="M33 1L41.9 10.2727L33 19"
+    //                   stroke="white"
+    //                   stroke-width="2"
+    //                 />
+    //               </svg>
+    //             </a>
+    //           </div>
+    //         </li>
+
+    //         <li data-reveal>
+    //           <div class="service_card container">
+    //             <img
+    //               src="./images/product/12baskets_9-resize.jpg"
+    //               width="340"
+    //               height="380"
+    //               loading="lazy"
+    //               alt="Event Photography"
+    //               class="img"
+    //             />
+
+    //             <div>
+    //               <h3 class="h3 card_title">Event Photography</h3>
+
+    //               <p class="card_subtitle">
+    //                 Capturing the vibrant energy and unforgettable moments of
+    //                 your events.
+    //               </p>
+    //             </div>
+
+    //             <a
+    //               href="#"
+    //               class="btn_icon"
+    //               aria-label="See more"
+    //               data-category="event-photography"
+    //             >
+    //               <svg
+    //                 xmlns="http://www.w3.org/2000/svg"
+    //                 width="43"
+    //                 height="20"
+    //                 viewBox="0 0 43 20"
+    //                 fill="none"
+    //               >
+    //                 <path d="M0 10H41" stroke="white" stroke-width="2" />
+    //                 <path
+    //                   d="M33 1L41.9 10.2727L33 19"
+    //                   stroke="white"
+    //                   stroke-width="2"
+    //                 />
+    //               </svg>
+    //             </a>
+    //           </div>
+    //         </li>
+
+    //         <li data-reveal>
+    //           <div class="service_card container">
+    //             <img
+    //               src="./images/service-2.jpg"
+    //               width="340"
+    //               height="380"
+    //               loading="lazy"
+    //               alt="Motion Graphics"
+    //               class="img"
+    //             />
+
+    //             <div>
+    //               <h3 class="h3 card_title">Motion Graphics</h3>
+
+    //               <p class="card_subtitle">
+    //                 Bringing your ideas to life with dynamic and engaging motion
+    //                 graphics.
+    //               </p>
+    //             </div>
+
+    //             <a
+    //               href="#"
+    //               class="btn_icon"
+    //               aria-label="See more"
+    //               data-category="motion-design"
+    //             >
+    //               <svg
+    //                 xmlns="http://www.w3.org/2000/svg"
+    //                 width="43"
+    //                 height="20"
+    //                 viewBox="0 0 43 20"
+    //                 fill="none"
+    //               >
+    //                 <path d="M0 10H41" stroke="white" stroke-width="2" />
+    //                 <path
+    //                   d="M33 1L41.9 10.2727L33 19"
+    //                   stroke="white"
+    //                   stroke-width="2"
+    //                 />
+    //               </svg>
+    //             </a>
+    //           </div>
+    //         </li>
+
+    //         <li data-reveal>
+    //           <div class="service_card container">
+    //             <img
+    //               src="./images/service-4.jpg"
+    //               width="340"
+    //               height="380"
+    //               loading="lazy"
+    //               alt="Videography"
+    //               class="img"
+    //             />
+
+    //             <div>
+    //               <h3 class="h3 card_title">Videography</h3>
+
+    //               <p class="card_subtitle">
+    //                 Crafting compelling stories through high-quality video
+    //                 production.
+    //               </p>
+    //             </div>
+
+    //             <a
+    //               href="#"
+    //               class="btn_icon"
+    //               aria-label="See more"
+    //               data-category="videography"
+    //             >
+    //               <svg
+    //                 xmlns="http://www.w3.org/2000/svg"
+    //                 width="43"
+    //                 height="20"
+    //                 viewBox="0 0 43 20"
+    //                 fill="none"
+    //               >
+    //                 <path d="M0 10H41" stroke="white" stroke-width="2" />
+    //                 <path
+    //                   d="M33 1L41.9 10.2727L33 19"
+    //                   stroke="white"
+    //                   stroke-width="2"
+    //                 />
+    //               </svg>
+    //             </a>
+    //           </div>
+    //         </li>
+    //       </ul>
+    //     </section>
+
+    //     <!-- Portfolio -->
+    //     <section
+    //       class="section portfolio"
+    //       id="portfolio"
+    //       aria-labelledby="portfolio-label"
+    //     >
+    //       <div class="container">
+    //         <div class="portfolio_list">
+    //           <div class="wrapper">
+    //             <h2 class="h2 section_title" id="portfolio_label" data-reveal>
+    //               My Recent Work.
+    //             </h2>
+    //             <div class="portfolio_card" data-reveal>
+    //               <figure
+    //                 class="card_banner img_holder has_before"
+    //                 style="--width: 700; --height: 605"
+    //               >
+    //                 <img
+    //                   src="./images/portfolio-1.jpg"
+    //                   width="700"
+    //                   height="605"
+    //                   loading="lazy"
+    //                   alt="Shoe Promo"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+
+    //               <div class="card_content">
+    //                 <h3 class="h4">
+    //                   <a href="#" class="card_title">Shoe Promo</a>
+    //                 </h3>
+
+    //                 <p class="card_tag">Product</p>
+    //               </div>
+
+    //               <a href="#" class="btn_icon" aria-label="See more">
+    //                 <svg
+    //                   xmlns="http://www.w3.org/2000/svg"
+    //                   width="43"
+    //                   height="20"
+    //                   viewBox="0 0 43 20"
+    //                   fill="none"
+    //                 >
+    //                   <path d="M0 10H41" stroke="black" stroke-width="2" />
+    //                   <path
+    //                     d="M33 1L41.9 10.2727L33 19"
+    //                     stroke="black"
+    //                     stroke-width="2"
+    //                   />
+    //                 </svg>
+    //               </a>
+    //             </div>
+
+    //             <div class="portfolio_card" data-reveal>
+    //               <figure
+    //                 class="card_banner img_holder has_before"
+    //                 style="--width: 700; --height: 1091"
+    //               >
+    //                 <img
+    //                   src="./images/portfolio-2.jpg"
+    //                   width="700"
+    //                   height="1091"
+    //                   loading="lazy"
+    //                   alt="Wedding Shot"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+
+    //               <div class="card_content">
+    //                 <h3 class="h4">
+    //                   <a href="#" class="card_title">Wedding Shot</a>
+    //                 </h3>
+
+    //                 <p class="card_tag">Wedding</p>
+    //               </div>
+
+    //               <a href="#" class="btn_icon" aria-label="See more">
+    //                 <svg
+    //                   xmlns="http://www.w3.org/2000/svg"
+    //                   width="43"
+    //                   height="20"
+    //                   viewBox="0 0 43 20"
+    //                   fill="none"
+    //                 >
+    //                   <path d="M0 10H41" stroke="black" stroke-width="2" />
+    //                   <path
+    //                     d="M33 1L41.9 10.2727L33 19"
+    //                     stroke="black"
+    //                     stroke-width="2"
+    //                   />
+    //                 </svg>
+    //               </a>
+    //             </div>
+    //           </div>
+
+    //           <div class="wrapper">
+    //             <div class="portfolio_card" data-reveal>
+    //               <figure
+    //                 class="card_banner img_holder has_before"
+    //                 style="--width: 700; --height: 1000"
+    //               >
+    //                 <img
+    //                   src="./images/potraits/potrait_5.png"
+    //                   width="700"
+    //                   height="1000"
+    //                   loading="lazy"
+    //                   alt="Fashion Show"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+
+    //               <div class="card_content">
+    //                 <h3 class="h4">
+    //                   <a href="#" class="card_title">Fashion Show</a>
+    //                 </h3>
+
+    //                 <p class="card_tag">Fashion, Model</p>
+    //               </div>
+
+    //               <a href="#" class="btn_icon" aria-label="See more">
+    //                 <svg
+    //                   xmlns="http://www.w3.org/2000/svg"
+    //                   width="43"
+    //                   height="20"
+    //                   viewBox="0 0 43 20"
+    //                   fill="none"
+    //                 >
+    //                   <path d="M0 10H41" stroke="black" stroke-width="2" />
+    //                   <path
+    //                     d="M33 1L41.9 10.2727L33 19"
+    //                     stroke="black"
+    //                     stroke-width="2"
+    //                   />
+    //                 </svg>
+    //               </a>
+    //             </div>
+
+    //             <div class="portfolio_card" data-reveal>
+    //               <figure
+    //                 class="card_banner img_holder has_before"
+    //                 style="--width: 700; --height: 850"
+    //               >
+    //                 <img
+    //                   src="./images/product/12baskets_11.jpg"
+    //                   width="700"
+    //                   height="850"
+    //                   loading="lazy"
+    //                   alt="12 Baskets"
+    //                   class="img_cover"
+    //                 />
+    //               </figure>
+
+    //               <div class="card_content">
+    //                 <h3 class="h4">
+    //                   <a href="#" class="card_title"
+    //                     >12 Baskets ~ Small Chops</a
+    //                   >
+    //                 </h3>
+
+    //                 <p class="card_tag">Food</p>
+    //               </div>
+
+    //               <a href="#" class="btn_icon" aria-label="See more">
+    //                 <svg
+    //                   xmlns="http://www.w3.org/2000/svg"
+    //                   width="43"
+    //                   height="20"
+    //                   viewBox="0 0 43 20"
+    //                   fill="none"
+    //                 >
+    //                   <path d="M0 10H41" stroke="black" stroke-width="2" />
+    //                   <path
+    //                     d="M33 1L41.9 10.2727L33 19"
+    //                     stroke="black"
+    //                     stroke-width="2"
+    //                   />
+    //                 </svg>
+    //               </a>
+    //             </div>
+    //           </div>
+    //         </div>
+
+    //         <img
+    //           src="./images/portfolio-shape.svg"
+    //           width="286"
+    //           height="232"
+    //           loading="lazy"
+    //           alt=""
+    //           class="shape"
+    //         />
+    //       </div>
+    //     </section>
+    //   </article>
+    // </main>
+
+    // <!-- Footer -->
+    // <footer class="footer">
+    //   <div class="footer_top section" id="contact">
+    //     <div class="container">
+    //       <p class="section_subtitle" data-reveal>Contact Us</p>
+
+    //       <h2 class="h2 section_title" data-reveal>
+    //         Interested in Collaborating or Have a Job Opportunity? Get in Touch!
+    //       </h2>
+
+    //       <button class="ctbtn_icon contact_modal_btn" data-reveal>
+    //         <img
+    //           src="./images/arrow-forward.svg"
+    //           width="43"
+    //           height="20"
+    //           loading="lazy"
+    //           alt="arrow-forward icon"
+    //         />
+    //       </button>
+    //       <!-- Form Element -->
+    //       <div class="contact_form">
+    //         <form method="POST" class="form contact_modal hidden" data-reveal>
+    //           <div class="input_box">
+    //             <div class="input_field field">
+    //               <label for="First Name">First Name</label>
+    //               <input
+    //                 type="text"
+    //                 placeholder="Ciroma Chukwuma"
+    //                 id="firstName"
+    //                 name="firstName"
+    //                 class="item"
+    //                 autocomplete="off"
+    //               />
+    //               <div class="error_txt">First name can't be blank</div>
+    //             </div>
+    //             <div class="input_field field">
+    //               <label for="Last Name">Last Name</label>
+    //               <input
+    //                 type="text"
+    //                 placeholder="Adekunle"
+    //                 id="lastName"
+    //                 name="lastName"
+    //                 class="item"
+    //                 autocomplete="off"
+    //               />
+    //               <div class="error_txt">Last name can't be blank</div>
+    //             </div>
+    //           </div>
+    //           <div class="input_box">
+    //             <div class="input_field field">
+    //               <label for="Email">E-mail</label>
+    //               <input
+    //                 type="text"
+    //                 placeholder="jinadukarim123@gmail.com"
+    //                 id="email"
+    //                 name="email"
+    //                 class="item"
+    //                 autocomplete="off"
+    //               />
+    //               <div class="error_txt email">Email can't be blank</div>
+    //             </div>
+    //             <div class="input_field field">
+    //               <label for="Subject">Subject</label>
+    //               <input
+    //                 type="text"
+    //                 placeholder="Collaboration Inquiry"
+    //                 id="subject"
+    //                 name="subject"
+    //                 class="item"
+    //                 autocomplete="off"
+    //               />
+    //               <div class="error_txt">Subject can't be blank</div>
+    //             </div>
+    //           </div>
+    //           <div class="textarea_field field">
+    //             <label for="Message">Message</label>
+    //             <textarea
+    //               name="message"
+    //               id="message"
+    //               placeholder="Hey there 👋🏽 Temmytade, I'd like to ..."
+    //               class="item"
+    //               autocomplete="off"
+    //             ></textarea>
+    //             <div class="error_txt">Message can't be blank</div>
+    //           </div>
+    //           <button type="submit">Send Message</button>
+    //           <div id="result"></div>
+    //         </form>
+    //       </div>
+
+    //       <img
+    //         src="./images/footer-1.jpg"
+    //         width="159"
+    //         height="176"
+    //         loading="lazy"
+    //         alt="photography"
+    //         class="abs_img abs_img-1"
+    //         data-reveal
+    //       />
+
+    //       <img
+    //         src="./images/footer-3.jpg"
+    //         width="265"
+    //         height="275"
+    //         loading="lazy"
+    //         alt="photography"
+    //         class="abs_img abs_img-2"
+    //         data-reveal
+    //       />
+
+    //       <img
+    //         src="./images/baby/baby_img2.jpg"
+    //         width="303"
+    //         height="272"
+    //         loading="lazy"
+    //         alt="photography"
+    //         class="abs_img abs_img-3"
+    //         data-reveal
+    //       />
+
+    //       <img
+    //         src="./images/footer-4.jpg"
+    //         width="175"
+    //         height="175"
+    //         loading="lazy"
+    //         alt="photography"
+    //         class="abs_img abs_img-4"
+    //         data-reveal
+    //       />
+
+    //       <img
+    //         src="./images/footer-shape.svg"
+    //         width="185"
+    //         height="134"
+    //         loading="lazy"
+    //         alt=""
+    //         class="shape"
+    //       />
+    //     </div>
+    //   </div>
+
+    //   <div class="footer_bottom">
+    //     <div class="container">
+    //       <a href="/" class="logo">
+    //         <img
+    //           src="./images/tb_logo_brown.svg"
+    //           width="40"
+    //           height="40"
+    //           loading="lazy"
+    //           alt="Temmytade home"
+    //         />
+    //       </a>
+
+    //       <ul class="social_list">
+    //         <li>
+    //           <a
+    //             target="_blank"
+    //             href="https://x.com/iam_temmytade1?t=ZnCRGqENTavJNGxOKEEJnw&s=09"
+    //             class="social_link"
+    //             >X.</a
+    //           >
+    //         </li>
+
+    //         <li>
+    //           <a
+    //             target="_blank"
+    //             href="https://www.behance.net/temmytadebalogun"
+    //             class="social_link"
+    //             >Be.</a
+    //           >
+    //         </li>
+
+    //         <li>
+    //           <a
+    //             target="_blank"
+    //             href="https://www.linkedin.com/in/temitade-balogun-26291517b/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+    //             class="social_link"
+    //             >Li.</a
+    //           >
+    //         </li>
+
+    //         <li>
+    //           <a
+    //             target="_blank"
+    //             href="https://www.facebook.com/share/1FUber2G8p/"
+    //             class="social_link"
+    //             >Fa.</a
+    //           >
+    //         </li>
+
+    //         <li>
+    //           <a
+    //             target="_blank"
+    //             href="https://www.instagram.com/temittade_balogun?igsh=MzlvaHVsM3IwNDg%3D"
+    //             class="social_link"
+    //             >Insta.</a
+    //           >
+    //         </li>
+    //       </ul>
+
+    //       <div class="copyright_dev">
+    //         <p class="copyright">
+    //           &copy; Temmytade Balogun, 2025. All Rights Reserved.
+    //         </p>
+    //         <p class="copyright">
+    //           Made with 🤎 by <a href="https://www.linkedin.com/in/ayomide-kayode-b24a22277/" class="dev_name">Ayomide</a>
+    //         </p>
+    //       </div>
+    //     </div>
+    //   </div>
+
+    //   <div class="footer_bg has_before">
+    //     <img
+    //       src="./images/footer-bg.jpg"
+    //       width="1920"
+    //       height="1135"
+    //       loading="lazy"
+    //       alt="photography"
+    //       class="img_cover"
+    //     />
+    //   </div>
+    // </footer>
+
+    // <!-- Back to top -->
+    // <a
+    //   href="#top"
+    //   class="back_top_btn"
+    //   aria-label="back to top"
+    //   data-back-top-btn
+    //   >0%</a
+    // >
+
+    // <!-- Custom Cursor -->
+    // <div class="cursor" data-cursor></div>
