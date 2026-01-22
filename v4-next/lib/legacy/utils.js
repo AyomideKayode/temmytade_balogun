@@ -1,22 +1,21 @@
-// lib/legacy/script.js
-export function initScript() {
-  'use strict';
-  // script for helper functions and utilities
+export const addEventOnElements = (elements, eventType, callback) => {
+  elements.forEach((element) => {
+    element.addEventListener(eventType, callback);
+  });
+};
 
-  // add event listeners to multiple elements
-  export const addEventOnElements = (elements, eventType, callback) => {
-    elements.forEach((element) => {
-      element.addEventListener(eventType, callback);
-    });
+export const initPreloader = () => {
+  const loadingElement = document.querySelector('[data-loading]');
+  if (!loadingElement) return;
+
+  const handleLoad = () => {
+    loadingElement.classList.add('loaded');
+    document.body.classList.remove('active');
   };
 
-  // Preloading Animation Effect
-  export const initPreloader = () => {
-    const loadingElement = document.querySelector('[data-loading]');
-
-    window.addEventListener('load', function () {
-      loadingElement.classList.add('loaded'); // add loaded class to loading element
-      this.document.body.classList.remove('active'); // remove active class from body
-    });
-  };
-}
+  if (document.readyState === 'complete') {
+    handleLoad();
+  } else {
+    window.addEventListener('load', handleLoad);
+  }
+};

@@ -1,64 +1,72 @@
 import { addEventOnElements } from './utils.js';
 
-// lib/legacy/navigation.js
-export function initScript() {
-  'use strict';
-  // script for navbar functions and responsive design
-  // and all related functions
+/**
+ * Nav Toggle Functionality for Mobile
+ */
+export const initNavbar = () => {
+  const [navTogglers, navLinks, navbar, overlay] = [
+    document.querySelectorAll('[data-nav-toggler]'),
+    document.querySelectorAll('[data-nav-link]'),
+    document.querySelector('[data-navbar]'),
+    document.querySelector('[data-overlay]'),
+  ];
 
-  /**
-   * Nav Toggle Functionality for Mobile
-   */
-  export const initNavbar = () => {
-    const [navTogglers, navLinks, navbar, overlay] = [
-      document.querySelectorAll('[data-nav-toggler]'),
-      document.querySelectorAll('[data-nav-link]'),
-      document.querySelector('[data-navbar]'),
-      document.querySelector('[data-overlay]'),
-    ];
+  if (!navbar || !overlay) return;
 
-    const toggleNav = () => {
-      navbar.classList.toggle('active');
-      overlay.classList.toggle('active');
-      document.body.classList.toggle('active');
-    };
-
-    const closeNav = () => {
-      navbar.classList.remove('active');
-      overlay.classList.remove('active');
-      document.body.classList.remove('active');
-    };
-
-    addEventOnElements(navTogglers, 'click', toggleNav);
-    addEventOnElements(navLinks, 'click', closeNav);
+  const toggleNav = () => {
+    navbar.classList.toggle('active');
+    overlay.classList.toggle('active');
+    document.body.classList.toggle('active');
   };
 
-  /**
-   * Header Active Class on Scroll
-   */
-  export const initHeaderOnScroll = () => {
-    const header = document.querySelector('[data-header]');
-
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('active', window.scrollY > 50);
-    });
+  const closeNav = () => {
+    navbar.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.classList.remove('active');
   };
 
-  /**
-   * Back to Top functionality
-   */
-  export const initBackToTop = () => {
-    const backToTopBtn = document.querySelector('[data-back-top-btn]');
+  if (navTogglers.length) addEventOnElements(navTogglers, 'click', toggleNav);
+  if (navLinks.length) addEventOnElements(navLinks, 'click', closeNav);
+};
 
-    window.addEventListener('scroll', () => {
-      // get scroll end position using scrollHeight and window.innerHeight
-      const scrollEndPos = document.body.scrollHeight - window.innerHeight;
-      // get total scroll percentage
-      const scrollPercent = (window.scrollY / scrollEndPos) * 100;
+/**
+ * Header Active Class on Scroll
+ */
+export const initHeaderOnScroll = () => {
+  const header = document.querySelector('[data-header]');
+  if (!header) return;
 
-      backToTopBtn.textContent = `${scrollPercent.toFixed(0)}%`; // show scroll percentage on button
-      // toggle back to top button visibility
-      backToTopBtn.classList.toggle('show', scrollPercent > 5);
-    });
+  const handleScroll = () => {
+    header.classList.toggle('active', window.scrollY > 50);
   };
-}
+
+  window.addEventListener('scroll', handleScroll);
+
+  // Cleanup function for React useEffect
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+};
+
+/**
+ * Back to Top functionality
+ */
+export const initBackToTop = () => {
+  const backToTopBtn = document.querySelector('[data-back-top-btn]');
+  if (!backToTopBtn) return;
+
+  const handleScroll = () => {
+    const scrollEndPos = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = (window.scrollY / scrollEndPos) * 100;
+
+    backToTopBtn.textContent = `${scrollPercent.toFixed(0)}%`;
+    backToTopBtn.classList.toggle('show', scrollPercent > 5);
+  };
+
+  window.addEventListener('scroll', handleScroll);
+
+  // Cleanup function for React useEffect
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+};
