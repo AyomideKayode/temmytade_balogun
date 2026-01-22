@@ -46,12 +46,20 @@
 
 | Phase | Name                        | Status         |
 | ----- | --------------------------- | -------------- |
-| 1     | Hybrid Bridge               | ⏳ In Progress |
-| 2     | Component Atomization       | ⏺ Planned      |
+| 1     | Hybrid Bridge               | ✅ Complete    |
+| 2     | Component Atomization       | ✅ Complete    |
 | 2.5   | Design System Modernization | ⏺ Planned      |
 | 3     | Filesystem Bridge           | ⏺ Planned      |
 | 4     | Cloudinary Architecture     | ⏺ Planned      |
 | 5     | Production Polish           | ⏺ Planned      |
+
+---
+
+## Phase 2 Progress
+
+- **Extracted Components**: `<Navbar />`, `<Header />`, `<Footer />`, `<GalleryGrid />`.
+- **Duplication Removed**: Header and Footer moved to `layout.tsx`. Gallery logic converted to React component.
+- **Untouched**: Legacy logic in `script.js` (preserved but links updated).
 
 ---
 
