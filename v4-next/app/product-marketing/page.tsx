@@ -13,7 +13,7 @@ export default function ProductMarketing() {
     <main>
       <section className="section gallery">
         <div className="container">
-           <GalleryGrid category="product-marketing" />
+          <GalleryGrid category="product-marketing" />
         </div>
       </section>
     </main>

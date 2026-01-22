@@ -13,7 +13,7 @@ export default function MotionDesign() {
     <main>
       <section className="section gallery">
         <div className="container">
-           <GalleryGrid category="motion-design" />
+          <GalleryGrid category="motion-design" />
         </div>
       </section>
     </main>

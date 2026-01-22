@@ -13,7 +13,7 @@ export default function WeddingPhotography() {
     <main>
       <section className="section gallery">
         <div className="container">
-           <GalleryGrid category="wedding-photography" />
+          <GalleryGrid category="wedding-photography" />
         </div>
       </section>
     </main>

@@ -1,5 +1,6 @@
 from playwright.sync_api import Page, expect, sync_playwright
 
+
 def verify_phase2(page: Page):
     # 1. Home Page Verification
     print("Navigating to Home...")
@@ -51,6 +52,7 @@ def verify_phase2(page: Page):
     # Take screenshot
     print("Taking screenshot...")
     page.screenshot(path="verification_phase2.png", full_page=True)
+
 
 if __name__ == "__main__":
     with sync_playwright() as p:
