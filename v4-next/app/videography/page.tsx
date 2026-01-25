@@ -1,19 +1,22 @@
-"use client";
-
-import React, { useEffect } from "react";
-import { initScript } from "@/lib/legacy/script";
+import React from "react";
+import { getGalleryImages } from "@/lib/gallery-local";
 import GalleryGrid from "../components/GalleryGrid";
+import ScriptInitializer from "../components/ScriptInitializer";
 
-export default function Videography() {
-  useEffect(() => {
-    return initScript();
-  }, []);
+export const metadata = {
+  title: "Videography | Tadz Media Concepts",
+  description: "Videography portfolio",
+};
+
+export default async function Videography() {
+  const images = await getGalleryImages('videography');
 
   return (
     <main>
+      <ScriptInitializer />
       <section className="section gallery">
         <div className="container">
-           <GalleryGrid category="videography" />
+          <GalleryGrid images={images} />
         </div>
       </section>
     </main>
