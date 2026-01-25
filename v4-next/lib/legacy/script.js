@@ -107,100 +107,10 @@ export function initScript() {
 
   /**
    * Gallery Modal Effect
+   * DEPRECATED: Handled by React Component (GalleryModal.tsx)
    */
-  const modal = document.getElementById('imageModal');
-  const modalContent = document.querySelector('.modal_images');
-  const closeModal = document.querySelector('.close');
-
-  if (modal && modalContent) {
-    const imageCollections = {
-      Grublane: [
-        './images/product/grublane_pizza.jpg',
-        './images/product/grublane_wideshot.jpg',
-        './images/product/grublane_jollof.jpg',
-        './images/product/grublane_2.jpg',
-        './images/product/grublane_english-breakfast.jpg',
-        './images/product/grublane_coconut-rice.jpg',
-        './images/product/grublane_3.jpg',
-        './images/product/grublane_4.jpg',
-        './images/product/grublane_5.jpg',
-        './images/product/grublane_6.jpg',
-        './images/product/grublane_1.jpg',
-        './images/product/grublane_7.jpg',
-        './images/product/grublane_8.jpg',
-      ],
-      'Lettuce Entertain': [
-        './images/category-1.jpg',
-        './images/category-2.jpg',
-        './images/category-3.jpg',
-      ],
-      'The Art of Style': [
-        './images/potraits/potrait_10.png',
-        './images/potraits/potrait_5.png',
-        './images/potraits/potrait_1.png',
-        './images/potraits/potrait_6.png',
-        './images/potraits/potrait_15.png',
-      ],
-      'Moments in Motion': [
-        './images/potraits/potrait_2.png',
-        './images/potraits/potrait_7.jpg',
-        './images/potraits/potrait_12.jpg',
-        './images/potraits/potrait_8.jpg',
-        './images/potraits/potrait_11.png',
-        './images/potraits/potrait_13.jpg',
-        './images/potraits/potrait_16.jpg',
-        './images/potraits/potrait_3.png',
-        './images/potraits/potrait_9.jpg',
-        './images/potraits/potrait_4.png',
-        './images/potraits/potrait_14.jpg',
-        './images/potraits/potrait_17.jpg',
-      ],
-      'Happily Ever After in Frames': [
-        './images/wedding-photography/wedding_3.jpg',
-        './images/wedding-photography/category-8.jpg',
-        './images/wedding-photography/wedding_4.jpg',
-        './images/wedding-photography/gallery-6.jpg',
-        './images/wedding-photography/wedding_1.jpg',
-        './images/wedding-photography/gallery-7.jpg',
-        './images/wedding-photography/wedding_5.jpg',
-        './images/wedding-photography/portfolio-2.jpg',
-        './images/wedding-photography/wedding_2.jpg',
-        './images/wedding-photography/wedding_7.jpg',
-        './images/wedding-photography/wedding_6.jpg',
-      ],
-    };
-
-    document.querySelectorAll('.card_title').forEach((title) => {
-      title.addEventListener('click', function (event) {
-        event.preventDefault();
-        const cardTitle = this.textContent.trim();
-
-        modalContent.innerHTML = '';
-
-        if (imageCollections[cardTitle]) {
-          imageCollections[cardTitle].forEach((imageSrc) => {
-            const img = document.createElement('img');
-            img.src = imageSrc;
-            img.alt = cardTitle;
-            modalContent.appendChild(img);
-          });
-          modal.style.display = 'block';
-        }
-      });
-    });
-
-    if (closeModal) {
-      closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-      });
-    }
-
-    window.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        modal.style.display = 'none';
-      }
-    });
-  }
+  // const modal = document.getElementById('imageModal');
+  // Logic removed as it is now handled by React state in HomeClient.tsx
 
   /**
    * Contact Form Logic
