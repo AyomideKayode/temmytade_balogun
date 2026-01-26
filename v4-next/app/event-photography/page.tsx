@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCategoryImages } from '@/lib/gallery-local';
+import { getCategoryImages } from '@/lib/gallery';
 import GalleryGrid from '../components/GalleryGrid';
 import ScriptInitializer from '../components/ScriptInitializer';
 
@@ -7,6 +7,8 @@ export const metadata = {
   title: 'Event Photography | Tadz Media Concepts',
   description: 'Event photography portfolio',
 };
+
+export const revalidate = 3600;
 
 export default async function EventPhotography() {
   const images = await getCategoryImages ('event-photography');

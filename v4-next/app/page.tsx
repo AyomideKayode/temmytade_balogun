@@ -1,6 +1,8 @@
 import React from 'react';
 import HomeClient from './components/HomeClient';
-import { getCollectionImages } from '@/lib/gallery-local';
+import { getCollectionImages } from '@/lib/gallery';
+
+export const revalidate = 3600;
 
 export default async function Home() {
   // Define the collections we need to fetch
