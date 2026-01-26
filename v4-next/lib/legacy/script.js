@@ -129,7 +129,11 @@ export function initScript() {
   }
 
   const handleEscape = function (e) {
-    if (e.key === 'Escape' && contactModal && !contactModal.classList.contains('hidden')) {
+    if (
+      e.key === 'Escape' &&
+      contactModal &&
+      !contactModal.classList.contains('hidden')
+    ) {
       toggleContactModal();
     }
   };
@@ -138,114 +142,121 @@ export function initScript() {
   // Form handling
   const form = document.querySelector('form');
   if (form) {
-      // Logic for form validation and submission
-      // ... (Keeping it simple for now, relying on the fact that the original script had it)
-      // I will copy the validation logic briefly to ensure it works
-      const firstName = document.getElementById('firstName');
-      const lastName = document.getElementById('lastName');
-      const email = document.getElementById('email');
-      const subject = document.getElementById('subject');
-      const message = document.getElementById('message');
-      const result = document.getElementById('result');
+    // Logic for form validation and submission
+    // ... (Keeping it simple for now, relying on the fact that the original script had it)
+    // I will copy the validation logic briefly to ensure it works
+    const firstName = document.getElementById('firstName');
+    const lastName = document.getElementById('lastName');
+    const email = document.getElementById('email');
+    const subject = document.getElementById('subject');
+    const message = document.getElementById('message');
+    const result = document.getElementById('result');
 
-      const accessKeyInput = document.createElement('input');
-      accessKeyInput.type = 'hidden';
-      accessKeyInput.name = 'access_key';
-      accessKeyInput.value = 'de28c4b6-5665-49a5-a0ff-cf52c82dd664';
-      form.appendChild(accessKeyInput);
+    const accessKeyInput = document.createElement('input');
+    accessKeyInput.type = 'hidden';
+    accessKeyInput.name = 'access_key';
+    accessKeyInput.value = 'de28c4b6-5665-49a5-a0ff-cf52c82dd664';
+    form.appendChild(accessKeyInput);
 
-      function sendEmail() {
-        const formData = new FormData(form);
-        const object = Object.fromEntries(formData);
-        const json = JSON.stringify(object);
+    function sendEmail() {
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
 
-        if (result) result.textContent = 'Sending...📸';
+      if (result) result.textContent = 'Sending...📸';
 
-        fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: json,
-        })
-          .then(async (response) => {
-            let json = await response.json();
-            if (response.status === 200) {
-              if (result) result.textContent = 'Message sent successfully! 📩';
-            } else {
-              console.log(response);
-              if (result) result.textContent = 'Something went wrong. Please try again later.';
-            }
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-            if (result) result.textContent = 'An error occurred while sending the message. Please try again later. ❌';
-          })
-          .finally(() => {
-            form.reset();
-            setTimeout(() => {
-              if (result) result.style.display = 'none';
-            }, 3000);
-          });
-      }
-
-      function isValidEmail() {
-        const emailRegex = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,3})(\.[a-z]{2,3})?$/;
-        const errTxtEmail = document.querySelector('.error_txt.email');
-        if (!email.value.match(emailRegex)) {
-          email.classList.add('error');
-          email.parentElement.classList.add('error');
-          if (errTxtEmail) {
-             errTxtEmail.textContent = email.value !== '' ? 'Please enter a valid email address.' : 'Email is required.';
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: json,
+      })
+        .then(async (response) => {
+          let json = await response.json();
+          if (response.status === 200) {
+            if (result) result.textContent = 'Message sent successfully! 📩';
+          } else {
+            console.log(response);
+            if (result)
+              result.textContent =
+                'Something went wrong. Please try again later.';
           }
-        } else {
-          email.classList.remove('error');
-          email.parentElement.classList.remove('error');
-          if (errTxtEmail) errTxtEmail.textContent = '';
-        }
-      }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          if (result)
+            result.textContent =
+              'An error occurred while sending the message. Please try again later. ❌';
+        })
+        .finally(() => {
+          form.reset();
+          setTimeout(() => {
+            if (result) result.style.display = 'none';
+          }, 3000);
+        });
+    }
 
-      function validateInputs() {
-        const items = document.querySelectorAll('.item');
-        items.forEach((item) => {
-          if (item.value === '') {
+    function isValidEmail() {
+      const emailRegex =
+        /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,3})(\.[a-z]{2,3})?$/;
+      const errTxtEmail = document.querySelector('.error_txt.email');
+      if (!email.value.match(emailRegex)) {
+        email.classList.add('error');
+        email.parentElement.classList.add('error');
+        if (errTxtEmail) {
+          errTxtEmail.textContent =
+            email.value !== ''
+              ? 'Please enter a valid email address.'
+              : 'Email is required.';
+        }
+      } else {
+        email.classList.remove('error');
+        email.parentElement.classList.remove('error');
+        if (errTxtEmail) errTxtEmail.textContent = '';
+      }
+    }
+
+    function validateInputs() {
+      const items = document.querySelectorAll('.item');
+      items.forEach((item) => {
+        if (item.value === '') {
+          item.classList.add('error');
+          item.parentElement.classList.add('error');
+        }
+        if (items[2].value !== '') isValidEmail();
+
+        item.addEventListener('keyup', () => {
+          if (item.value !== '') {
+            item.classList.remove('error');
+            item.parentElement.classList.remove('error');
+          } else {
             item.classList.add('error');
             item.parentElement.classList.add('error');
           }
-          if (items[2].value !== '') isValidEmail();
-
-          item.addEventListener('keyup', () => {
-             if (item.value !== '') {
-               item.classList.remove('error');
-               item.parentElement.classList.remove('error');
-             } else {
-               item.classList.add('error');
-               item.parentElement.classList.add('error');
-             }
-          });
         });
-        if (items[2]) {
-             items[2].addEventListener('keyup', isValidEmail);
-        }
-      }
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        validateInputs();
-        if (
-          !firstName.classList.contains('error') &&
-          !lastName.classList.contains('error') &&
-          !email.classList.contains('error') &&
-          !subject.classList.contains('error') &&
-          !message.classList.contains('error')
-        ) {
-          sendEmail();
-        }
-        return false;
       });
-  }
+      if (items[2]) {
+        items[2].addEventListener('keyup', isValidEmail);
+      }
+    }
 
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      validateInputs();
+      if (
+        !firstName.classList.contains('error') &&
+        !lastName.classList.contains('error') &&
+        !email.classList.contains('error') &&
+        !subject.classList.contains('error') &&
+        !message.classList.contains('error')
+      ) {
+        sendEmail();
+      }
+      return false;
+    });
+  }
 
   /**
    * Custom Cursor Effect
@@ -263,19 +274,27 @@ export function initScript() {
     }, 100);
   };
 
-  const hoverActive = function () { if (cursor) cursor.classList.add('hovered'); };
-  const hoverInactive = function () { if (cursor) cursor.classList.remove('hovered'); };
-  const handleMouseLeave = function () { if (cursor) cursor.classList.add('disabled'); };
-  const handleMouseEnter = function () { if (cursor) cursor.classList.remove('disabled'); };
+  const hoverActive = function () {
+    if (cursor) cursor.classList.add('hovered');
+  };
+  const hoverInactive = function () {
+    if (cursor) cursor.classList.remove('hovered');
+  };
+  const handleMouseLeave = function () {
+    if (cursor) cursor.classList.add('disabled');
+  };
+  const handleMouseEnter = function () {
+    if (cursor) cursor.classList.remove('disabled');
+  };
 
   if (cursor) {
-      document.body.addEventListener('mousemove', handleMouseMove);
-      addEventOnElements(anchorElements, 'mouseover', hoverActive);
-      addEventOnElements(anchorElements, 'mouseout', hoverInactive);
-      addEventOnElements(buttons, 'mouseover', hoverActive);
-      addEventOnElements(buttons, 'mouseout', hoverInactive);
-      document.body.addEventListener('mouseleave', handleMouseLeave);
-      document.body.addEventListener('mouseenter', handleMouseEnter);
+    document.body.addEventListener('mousemove', handleMouseMove);
+    addEventOnElements(anchorElements, 'mouseover', hoverActive);
+    addEventOnElements(anchorElements, 'mouseout', hoverInactive);
+    addEventOnElements(buttons, 'mouseover', hoverActive);
+    addEventOnElements(buttons, 'mouseout', hoverInactive);
+    document.body.addEventListener('mouseleave', handleMouseLeave);
+    document.body.addEventListener('mouseenter', handleMouseEnter);
   }
 
   // handle services section page navigation
@@ -301,12 +320,12 @@ export function initScript() {
 
     document.removeEventListener('keydown', handleEscape);
     if (cursor) {
-        document.body.removeEventListener('mousemove', handleMouseMove);
-        document.body.removeEventListener('mouseleave', handleMouseLeave);
-        document.body.removeEventListener('mouseenter', handleMouseEnter);
-        // cleaning up addEventOnElements is harder because we didn't store the exact bound functions if they were anonymous,
-        // but here hoverActive are named functions so we can remove them if we iterate again.
-        // For now, this is sufficient.
+      document.body.removeEventListener('mousemove', handleMouseMove);
+      document.body.removeEventListener('mouseleave', handleMouseLeave);
+      document.body.removeEventListener('mouseenter', handleMouseEnter);
+      // cleaning up addEventOnElements is harder because we didn't store the exact bound functions if they were anonymous,
+      // but here hoverActive are named functions so we can remove them if we iterate again.
+      // For now, this is sufficient.
     }
   };
 }

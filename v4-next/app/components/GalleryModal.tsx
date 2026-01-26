@@ -8,7 +8,11 @@ interface GalleryModalProps {
   images: string[];
 }
 
-export default function GalleryModal({ isOpen, onClose, images }: GalleryModalProps) {
+export default function GalleryModal({
+  isOpen,
+  onClose,
+  images,
+}: GalleryModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,20 +46,22 @@ export default function GalleryModal({ isOpen, onClose, images }: GalleryModalPr
 
   return (
     <div
-      id="imageModal"
-      className="modal"
+      id='imageModal'
+      className='modal'
       style={{ display: 'block' }}
       ref={modalRef}
     >
-      <div className="modal_content">
-        <span className="close" onClick={onClose}>&times;</span>
-        <div className="modal_images">
+      <div className='modal_content'>
+        <span className='close' onClick={onClose}>
+          &times;
+        </span>
+        <div className='modal_images'>
           {images.map((src, index) => (
             <img
               key={index}
               src={src}
               alt={`Gallery image ${index + 1}`}
-              className="modal_image"
+              className='modal_image'
             />
           ))}
         </div>

@@ -35,19 +35,23 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
 
   return (
     <>
-      <GalleryModal isOpen={isModalOpen} onClose={closeModal} images={currentImages} />
+      <GalleryModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        images={currentImages}
+      />
 
       {/* Preloading */}
       <div className='loading' data-loading>
         <img
-          src='/images/loading_t.svg'
+          src='/images/svgs/loading_t.svg'
           width={55}
           height={55}
           alt='loading'
           className='img'
         />
         <img
-          src='/images/loading-circle.svg'
+          src='/images/svgs/loading-circle.svg'
           width={70}
           height={70}
           alt=''
@@ -61,7 +65,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
           <section className='section hero' id='home' aria-label='home'>
             <div className='container'>
               <img
-                src='/images/hero_t_banner.png'
+                src='/images/about/hero_t_banner.png'
                 width={322}
                 height={322}
                 alt=''
@@ -89,7 +93,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
             </div>
 
             <img
-              src='/images/hero-shape.svg'
+              src='/images/svgs/hero-shape.svg'
               width={211}
               height={189}
               alt=''
@@ -109,7 +113,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                     }
                   >
                     <img
-                      src='/images/grublane1.jpg'
+                      src='/images/product/grublane/grublane1.jpg'
                       width={450}
                       height={625}
                       loading='lazy'
@@ -119,7 +123,11 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </figure>
                   <div className='card_content'>
                     <h3 className='h6'>
-                      <a href='#' className='card_title' onClick={(e) => openModal(e, 'Grublane')}>
+                      <a
+                        href='#'
+                        className='card_title'
+                        onClick={(e) => openModal(e, 'Grublane')}
+                      >
                         Grublane
                       </a>
                     </h3>
@@ -127,7 +135,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </div>
                   <a href='/product-marketing' className='btn_icon'>
                     <img
-                      src='/images/arrow-forward.svg'
+                      src='/images/svgs/arrow-forward.svg'
                       width={43}
                       height={20}
                       loading='lazy'
@@ -143,7 +151,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                     }
                   >
                     <img
-                      src='/images/gallery-2.jpg'
+                      src='/images/gallery/gallery-2.jpg'
                       width={450}
                       height={625}
                       loading='lazy'
@@ -153,7 +161,11 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </figure>
                   <div className='card_content'>
                     <h3 className='h6'>
-                      <a href='#' className='card_title' onClick={(e) => openModal(e, 'Lettuce Entertain')}>
+                      <a
+                        href='#'
+                        className='card_title'
+                        onClick={(e) => openModal(e, 'Lettuce Entertain')}
+                      >
                         Lettuce Entertain
                       </a>
                     </h3>
@@ -161,7 +173,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </div>
                   <a href='#' className='btn_icon'>
                     <img
-                      src='/images/arrow-forward.svg'
+                      src='/images/svgs/arrow-forward.svg'
                       width={43}
                       height={20}
                       loading='lazy'
@@ -179,7 +191,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                     }
                   >
                     <img
-                      src='/images/potraits/potrait_6.png'
+                      src='/images/portraits/the-art-of-style/portrait_6.png'
                       width={450}
                       height={625}
                       loading='lazy'
@@ -189,7 +201,11 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </figure>
                   <div className='card_content'>
                     <h3 className='h6'>
-                      <a href='#' className='card_title' onClick={(e) => openModal(e, 'The Art of Style')}>
+                      <a
+                        href='#'
+                        className='card_title'
+                        onClick={(e) => openModal(e, 'The Art of Style')}
+                      >
                         The Art of Style
                       </a>
                     </h3>
@@ -197,7 +213,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </div>
                   <a href='#' className='btn_icon'>
                     <img
-                      src='/images/arrow-forward.svg'
+                      src='/images/svgs/arrow-forward.svg'
                       width={43}
                       height={20}
                       loading='lazy'
@@ -213,7 +229,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                     }
                   >
                     <img
-                      src='/images/gallery-4.jpg'
+                      src='/images/gallery/gallery-4.jpg'
                       width={450}
                       height={625}
                       loading='lazy'
@@ -223,7 +239,11 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </figure>
                   <div className='card_content'>
                     <h3 className='h6'>
-                      <a href='#' className='card_title' onClick={(e) => openModal(e, 'Juan More Taco')}>
+                      <a
+                        href='#'
+                        className='card_title'
+                        onClick={(e) => openModal(e, 'Juan More Taco')}
+                      >
                         Juan More Taco
                       </a>
                     </h3>
@@ -231,7 +251,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </div>
                   <a href='#' className='btn_icon'>
                     <img
-                      src='/images/arrow-forward.svg'
+                      src='/images/svgs/arrow-forward.svg'
                       width={43}
                       height={20}
                       loading='lazy'
@@ -249,7 +269,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                     }
                   >
                     <img
-                      src='/images/potraits/potrait_12.jpg'
+                      src='/images/portraits/moments-in-motion/portrait_12.jpg'
                       width={450}
                       height={625}
                       loading='lazy'
@@ -259,7 +279,11 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </figure>
                   <div className='card_content'>
                     <h3 className='h6'>
-                      <a href='#' className='card_title' onClick={(e) => openModal(e, 'Moments in Motion')}>
+                      <a
+                        href='#'
+                        className='card_title'
+                        onClick={(e) => openModal(e, 'Moments in Motion')}
+                      >
                         Moments in Motion
                       </a>
                     </h3>
@@ -267,7 +291,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </div>
                   <a href='#' className='btn_icon'>
                     <img
-                      src='/images/arrow-forward.svg'
+                      src='/images/svgs/arrow-forward.svg'
                       width={43}
                       height={20}
                       loading='lazy'
@@ -283,7 +307,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                     }
                   >
                     <img
-                      src='/images/gallery-6.jpg'
+                      src='/images/gallery/gallery-6.jpg'
                       width={450}
                       height={625}
                       loading='lazy'
@@ -293,7 +317,11 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </figure>
                   <div className='card_content'>
                     <h3 className='h6'>
-                      <a href='#' className='card_title' onClick={(e) => openModal(e, 'Cookie Monstah')}>
+                      <a
+                        href='#'
+                        className='card_title'
+                        onClick={(e) => openModal(e, 'Cookie Monstah')}
+                      >
                         Cookie Monstah
                       </a>
                     </h3>
@@ -301,7 +329,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </div>
                   <a href='#' className='btn_icon'>
                     <img
-                      src='/images/arrow-forward.svg'
+                      src='/images/svgs/arrow-forward.svg'
                       width={43}
                       height={20}
                       loading='lazy'
@@ -319,7 +347,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                     }
                   >
                     <img
-                      src='/images/wedding-photography/wedding_1.jpg'
+                      src='/images/wedding-photography/happily-ever-after-in-frames/wedding_1.jpg'
                       width={450}
                       height={625}
                       loading='lazy'
@@ -329,7 +357,13 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </figure>
                   <div className='card_content'>
                     <h3 className='h6'>
-                      <a href='#' className='card_title' onClick={(e) => openModal(e, 'Happily Ever After in Frames')}>
+                      <a
+                        href='#'
+                        className='card_title'
+                        onClick={(e) =>
+                          openModal(e, 'Happily Ever After in Frames')
+                        }
+                      >
                         Happily Ever After in Frames
                       </a>
                     </h3>
@@ -337,7 +371,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </div>
                   <a href='/wedding-photography' className='btn_icon'>
                     <img
-                      src='/images/arrow-forward.svg'
+                      src='/images/svgs/arrow-forward.svg'
                       width={43}
                       height={20}
                       loading='lazy'
@@ -353,7 +387,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                     }
                   >
                     <img
-                      src='/images/gallery-8.jpg'
+                      src='/images/gallery/gallery-8.jpg'
                       width={450}
                       height={625}
                       loading='lazy'
@@ -363,7 +397,11 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </figure>
                   <div className='card_content'>
                     <h3 className='h6'>
-                      <a href='#' className='card_title' onClick={(e) => openModal(e, 'The Lockhart Bar')}>
+                      <a
+                        href='#'
+                        className='card_title'
+                        onClick={(e) => openModal(e, 'The Lockhart Bar')}
+                      >
                         The Lockhart Bar
                       </a>
                     </h3>
@@ -371,7 +409,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </div>
                   <a href='#' className='btn_icon'>
                     <img
-                      src='/images/arrow-forward.svg'
+                      src='/images/svgs/arrow-forward.svg'
                       width={43}
                       height={20}
                       loading='lazy'
@@ -384,7 +422,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
 
             <a href='#service' className='scroll_down'>
               <img
-                src='/images/scroll-down.svg'
+                src='/images/svgs/scroll-down.svg'
                 width={40}
                 height={66}
                 loading='lazy'
@@ -393,7 +431,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
             </a>
 
             <img
-              src='/images/gallery-shape.svg'
+              src='/images/svgs/gallery-shape.svg'
               width={220}
               height={78}
               loading='lazy'
@@ -423,7 +461,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/category-1.jpg'
+                        src='/images/categories/category-1.jpg'
                         width={600}
                         height={690}
                         loading='lazy'
@@ -448,7 +486,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/category-2.jpg'
+                        src='/images/categories/category-2.jpg'
                         width={600}
                         height={690}
                         loading='lazy'
@@ -473,7 +511,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/category-3.jpg'
+                        src='/images/categories/category-3.jpg'
                         width={600}
                         height={690}
                         loading='lazy'
@@ -498,7 +536,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/category-4.jpg'
+                        src='/images/categories/category-4.jpg'
                         width={600}
                         height={690}
                         loading='lazy'
@@ -523,7 +561,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/potraits/potrait_5.png'
+                        src='/images/portraits/moments-in-motion/potrait_5.png'
                         width={600}
                         height={690}
                         loading='lazy'
@@ -548,7 +586,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/category-5.jpg'
+                        src='/images/categories/category-5.jpg'
                         width={600}
                         height={690}
                         loading='lazy'
@@ -573,7 +611,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/category-6.jpg'
+                        src='/images/categories/category-6.jpg'
                         width={600}
                         height={690}
                         loading='lazy'
@@ -598,7 +636,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/category-8.jpg'
+                        src='/images/categories/category-8.jpg'
                         width={600}
                         height={690}
                         loading='lazy'
@@ -623,7 +661,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/product/12baskets_8.jpg'
+                        src='/images/product/12-baskets/12baskets_8.jpg'
                         width={600}
                         height={690}
                         loading='lazy'
@@ -648,7 +686,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/potraits/potrait_3.png'
+                        src='/images/portraits/moments-in-motion/potrait_3.png'
                         width={600}
                         height={690}
                         loading='lazy'
@@ -673,7 +711,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/product/12baskets_1.jpg'
+                        src='/images/product/12-baskets/12baskets_1.jpg'
                         width={600}
                         height={690}
                         loading='lazy'
@@ -698,7 +736,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/product/grublane_3.jpg'
+                        src='/images/product/grublane/grublane_3.jpg'
                         width={600}
                         height={690}
                         loading='lazy'
@@ -735,7 +773,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   </p>
 
                   <img
-                    src='/images/signature.png'
+                    src='/images/about/signature.png'
                     width={151}
                     height={92}
                     loading='lazy'
@@ -753,7 +791,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                   }
                 >
                   <img
-                    src='/images/potraits/self.png'
+                    src='/images/about/self.png'
                     width={512}
                     height={684}
                     loading='lazy'
@@ -763,7 +801,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                 </div>
 
                 <img
-                  src='/images/about_banner3.png'
+                  src='/images/about/about_banner3.png'
                   width={178}
                   height={178}
                   loading='lazy'
@@ -773,7 +811,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                 />
 
                 <img
-                  src='/images/about-shape-2.svg'
+                  src='/images/svgs/about-shape-2.svg'
                   width={659}
                   height={653}
                   loading='lazy'
@@ -783,7 +821,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
               </figure>
 
               <img
-                src='/images/about-shape-3.svg'
+                src='/images/svgs/about-shape-3.svg'
                 width={239}
                 height={232}
                 loading='lazy'
@@ -807,7 +845,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
               <li data-reveal>
                 <div className='service_card container'>
                   <img
-                    src='/images/service-1.jpg'
+                    src='/images/service-images/service-1.jpg'
                     width={340}
                     height={380}
                     loading='lazy'
@@ -851,7 +889,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
               <li data-reveal>
                 <div className='service_card container'>
                   <img
-                    src='/images/service-3.jpg'
+                    src='/images/service-images/service-3.jpg'
                     width={340}
                     height={380}
                     loading='lazy'
@@ -895,7 +933,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
               <li data-reveal>
                 <div className='service_card container'>
                   <img
-                    src='/images/product/12baskets_9-resize.jpg'
+                    src='/images/product/12-baskets/12baskets_9-resize.jpg'
                     width={340}
                     height={380}
                     loading='lazy'
@@ -939,7 +977,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
               <li data-reveal>
                 <div className='service_card container'>
                   <img
-                    src='/images/service-2.jpg'
+                    src='/images/service-images/service-2.jpg'
                     width={340}
                     height={380}
                     loading='lazy'
@@ -983,7 +1021,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
               <li data-reveal>
                 <div className='service_card container'>
                   <img
-                    src='/images/service-4.jpg'
+                    src='/images/service-images/service-2.jpg'
                     width={340}
                     height={380}
                     loading='lazy'
@@ -1053,7 +1091,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/portfolio-1.jpg'
+                        src='/images/portfolio/portfolio-1.jpg'
                         width={700}
                         height={605}
                         loading='lazy'
@@ -1064,7 +1102,11 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
 
                     <div className='card_content'>
                       <h3 className='h4'>
-                        <a href='#' className='card_title' onClick={(e) => openModal(e, 'Shoe Promo')}>
+                        <a
+                          href='#'
+                          className='card_title'
+                          onClick={(e) => openModal(e, 'Shoe Promo')}
+                        >
                           Shoe Promo
                         </a>
                       </h3>
@@ -1101,7 +1143,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/portfolio-2.jpg'
+                        src='/images/portfolio/portfolio-2.jpg'
                         width={700}
                         height={1091}
                         loading='lazy'
@@ -1112,7 +1154,11 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
 
                     <div className='card_content'>
                       <h3 className='h4'>
-                        <a href='#' className='card_title' onClick={(e) => openModal(e, 'Wedding Shot')}>
+                        <a
+                          href='#'
+                          className='card_title'
+                          onClick={(e) => openModal(e, 'Wedding Shot')}
+                        >
                           Wedding Shot
                         </a>
                       </h3>
@@ -1151,7 +1197,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/potraits/potrait_5.png'
+                        src='/images/portraits/the-art-of-style/portrait_5.png'
                         width={700}
                         height={1000}
                         loading='lazy'
@@ -1162,7 +1208,11 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
 
                     <div className='card_content'>
                       <h3 className='h4'>
-                        <a href='#' className='card_title' onClick={(e) => openModal(e, 'Fashion Show')}>
+                        <a
+                          href='#'
+                          className='card_title'
+                          onClick={(e) => openModal(e, 'Fashion Show')}
+                        >
                           Fashion Show
                         </a>
                       </h3>
@@ -1199,7 +1249,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
                       }
                     >
                       <img
-                        src='/images/product/12baskets_11.jpg'
+                        src='/images/product/12-baskets/12baskets_11.jpg'
                         width={700}
                         height={850}
                         loading='lazy'
@@ -1210,7 +1260,13 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
 
                     <div className='card_content'>
                       <h3 className='h4'>
-                        <a href='#' className='card_title' onClick={(e) => openModal(e, '12 Baskets ~ Small Chops')}>
+                        <a
+                          href='#'
+                          className='card_title'
+                          onClick={(e) =>
+                            openModal(e, '12 Baskets ~ Small Chops')
+                          }
+                        >
                           12 Baskets ~ Small Chops
                         </a>
                       </h3>
@@ -1239,7 +1295,7 @@ export default function HomeClient({ galleryData }: HomeClientProps) {
               </div>
 
               <img
-                src='/images/portfolio-shape.svg'
+                src='/images/svgs/portfolio-shape.svg'
                 width={286}
                 height={232}
                 loading='lazy'
