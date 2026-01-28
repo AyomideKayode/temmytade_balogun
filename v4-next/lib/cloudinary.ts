@@ -12,13 +12,13 @@ cloudinary.config({
  * Cloudinary folders must strictly mirror route slugs (e.g., 'product-marketing').
  */
 const FOLDER_MAP: Record<string, string> = {
-  'product': 'product-marketing',
+  product: 'product-marketing',
   'product-marketing': 'product-marketing',
   'wedding-photography': 'wedding-photography',
   'event-photography': 'event-photography',
-  'videography': 'videography',
+  videography: 'videography',
   'motion-design': 'motion-design',
-  'portraits': 'portraits',
+  portraits: 'portraits',
 };
 
 const ROOT_FOLDER = 'tadz';
@@ -41,7 +41,10 @@ export async function getCategoryImages(category: string): Promise<string[]> {
 
     return result.resources.map((r: any) => r.secure_url);
   } catch (error) {
-    console.error(`[Cloudinary] Error fetching category '${category}' from '${searchFolder}':`, error);
+    console.error(
+      `[Cloudinary] Error fetching category '${category}' from '${searchFolder}':`,
+      error,
+    );
     return [];
   }
 }
@@ -49,7 +52,10 @@ export async function getCategoryImages(category: string): Promise<string[]> {
 /**
  * Fetch images in a specific collection.
  */
-export async function getCollectionImages(category: string, collection: string): Promise<string[]> {
+export async function getCollectionImages(
+  category: string,
+  collection: string,
+): Promise<string[]> {
   const categoryFolder = FOLDER_MAP[category] ?? category;
 
   // Normalize collection name to kebab-case to match folder conventions
@@ -71,7 +77,10 @@ export async function getCollectionImages(category: string, collection: string):
 
     return result.resources.map((r: any) => r.secure_url);
   } catch (error) {
-    console.error(`[Cloudinary] Error fetching collection '${collection}' from '${searchFolder}':`, error);
+    console.error(
+      `[Cloudinary] Error fetching collection '${collection}' from '${searchFolder}':`,
+      error,
+    );
     return [];
   }
 }

@@ -18,7 +18,10 @@ export async function getCategoryImages(category: string): Promise<string[]> {
 /**
  * Get images for a specific collection inside a category.
  */
-export async function getCollectionImages(category: string, collection: string): Promise<string[]> {
+export async function getCollectionImages(
+  category: string,
+  collection: string,
+): Promise<string[]> {
   if (useCloudinary) {
     return CloudinaryGallery.getCollectionImages(category, collection);
   }
