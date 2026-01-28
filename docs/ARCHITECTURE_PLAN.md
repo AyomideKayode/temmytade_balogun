@@ -48,9 +48,9 @@
 | ----- | --------------------------- | -------------- |
 | 1     | Hybrid Bridge               | ✅ Complete    |
 | 2     | Component Atomization       | ✅ Complete    |
-| 2.5   | Design System Modernization | ⏺ Planned      |
-| 3     | Filesystem Bridge           | ⏺ Planned      |
-| 4     | Cloudinary Architecture     | ⏺ Planned      |
+| 2.5   | Design System Modernization | ✅ Complete    |
+| 3     | Filesystem Bridge           | ✅ Complete    |
+| 4     | Cloudinary Architecture     | ✅ Complete    |
 | 5     | Production Polish           | ⏺ Planned      |
 
 ---
@@ -118,11 +118,11 @@
 - **Objective**: Enable Client-Managed Content and Advanced Optimization.
 - **Rationale**: The Filesystem (Phase 3) still requires a developer to "push code" (upload files to git) to update the site. Cloudinary allows the client to upload photos via a Web UI.
 - **Cloudinary Strategy**:
-  - **Structure**: Folders match routes (e.g., `tadz/wedding`, `tadz/events`).
-  - **Metadata**: Use "tags" for sub-filtering (e.g., `tag: "featured"`).
+  - **Structure**: Folders strictly match route slugs (e.g., `tadz/wedding-photography`, `tadz/product-marketing`). Collections live in subfolders.
+  - **Source**: Abstraction layer (`lib/gallery.ts`) switches between Filesystem and Cloudinary based on `USE_CLOUDINARY` env var.
 - **Implementation (Next.js App Router)**:
-  - **Fetching**: Server Components call Cloudinary Admin API.
-  - **Caching Strategy**: Use **ISR (Incremental Static Regeneration)**.
+  - **Fetching**: Server Components call Cloudinary Search API via `lib/cloudinary.ts`.
+  - **Caching Strategy**: Use **ISR (Incremental Static Regeneration)** with `revalidate = 3600`.
 
     ```typescript
     // lib/cloudinary.ts
